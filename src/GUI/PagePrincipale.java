@@ -292,7 +292,11 @@ public class PagePrincipale extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuAcceuilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAcceuilMouseClicked
-            // TODO add your handling code here:
+        jPanelBaseContainer.setVisible(false);
+        jPanelBaseContainer.removeAll();
+        jPanelBaseContainer.add(panelHome);
+        jPanelBaseContainer.setVisible(true);
+        // TODO add your handling code here:
         
     }//GEN-LAST:event_jMenuAcceuilMouseClicked
 

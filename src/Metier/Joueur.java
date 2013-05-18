@@ -11,15 +11,15 @@ import java.sql.Date;
  * @author rmh
  */
 public class Joueur {
-    private int idJoueur;
-    private String nomJoueur;
-     private String prenomJoueur;
-     private Date datenaiss;
-     private String postJoueur;
-     private float salaire;
-     private float tailleJoueur;
-     private float poidsJoueur;
-     private String email;
+        private int idJoueur;
+        private String nomJoueur;
+        private String prenomJoueur;
+        private Date datenaiss;
+        private String postJoueur;
+        private float salaire;
+        private float tailleJoueur;
+        private float poidsJoueur;
+        private String email;
      
      public Joueur() {}
      public Joueur(int IdJoueur, String nomJoueur, String prenomJoueur, Date datenaiss, String postJoueur, float salaire, float tailleJoueur, float poidsJoueur, String email) {

@@ -149,6 +149,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuBar1.add(jMenuMembre);
 
         jMenuAdmin.setText("Espace administration");
+        jMenuAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuAdminMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenuAdmin);
 
         jMenuFoot.setText("FootBall");
@@ -231,7 +236,7 @@ public class PagePrincipale extends javax.swing.JFrame {
                     .addComponent(jButtonLastMatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonClassement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonCalendrier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 353, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
                 .addComponent(jPanelSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -268,6 +273,14 @@ public class PagePrincipale extends javax.swing.JFrame {
     private void jMenuItemBaskeChampionnat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBaskeChampionnat1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemBaskeChampionnat1ActionPerformed
+
+    private void jMenuAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAdminMouseClicked
+    
+        // TODO add your handling code here:
+        PageAdministrateur pa = new PageAdministrateur();
+        pa.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuAdminMouseClicked
 
     /**
      * @param args the command line arguments

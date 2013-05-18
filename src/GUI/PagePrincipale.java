@@ -442,9 +442,9 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JTextPane nextMatchTextPane;
     // NextMatch END
     
-    // NextMatch Begin
+    // LastMatch Begin
     private javax.swing.JTextPane lastMatchTextPane;
-    // NextMatch END
+    // LastMatch END
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;

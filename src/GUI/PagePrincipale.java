@@ -96,6 +96,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         });
 
         jButtonClassement.setText("Classement");
+        jButtonClassement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClassementActionPerformed(evt);
+            }
+        });
 
         jButtonCalendrier.setText("Calendrier");
 
@@ -339,6 +344,15 @@ public class PagePrincipale extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLastMatchActionPerformed
 
+    private void jButtonClassementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClassementActionPerformed
+      jPanelBaseContainer.setVisible(false); // pour actualiser on doit le cacher, le rempir puis le faire apparaitre
+      jPanelBaseContainer.removeAll();
+      System.out.println("Setting Panel Classement");
+      jPanelBaseContainer.add(panelClassement);
+      jPanelBaseContainer.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonClassementActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,6 +364,7 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.setVisible(true);
         initNextMatchPanel();
         initLastMatchPanel();
+        initClassementPanel();
     
         
     }
@@ -390,6 +405,23 @@ public class PagePrincipale extends javax.swing.JFrame {
         lastMatchTextPane.setEditable(false);
         panelLastMatch.setLayout(new GridLayout(1,1));
         panelLastMatch.add(lastMatchTextPane);
+    }
+    
+    private void initClassementPanel(){
+        panelClassement = new JPanel();
+        panelClassement.setLayout(new GridLayout(1, 1));
+        
+        tableClassement = new JTable(new Object[][]
+                {{"1","OM", "5", "2", "1", "2","4", "1","0"},
+                 {"2","OL", "5", "2", "1", "2","4", "1","0"},
+                 {"3","PSG", "5", "2", "1", "2","4", "1","3"},
+                 {"4","CA", "5", "2", "1", "2","4", "1","0"}
+                }
+                //equipe/#/PT/G/N/P/B.M/B.C/D.B
+                , new String[]{"#", "Equipe", "PT", "G", "N", "P", "B.M", "B.C", "D.B"} );
+        scrollPaneClassement = new JScrollPane(tableClassement);
+        panelClassement.add(scrollPaneClassement);
+        panelClassement.setVisible(true);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -445,6 +477,11 @@ public class PagePrincipale extends javax.swing.JFrame {
     // LastMatch Begin
     private javax.swing.JTextPane lastMatchTextPane;
     // LastMatch END
+    
+    // Classement Begin
+    private javax.swing.JTable tableClassement;
+    private javax.swing.JScrollPane scrollPaneClassement;
+    // Classement END
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;

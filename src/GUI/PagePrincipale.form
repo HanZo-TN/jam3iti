@@ -24,7 +24,17 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuAcceuilMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenuFootChampionnat">
+        <Menu class="javax.swing.JMenu" name="jMenuMembre">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Espace membre"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuAdmin">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Espace administration"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuFoot">
           <Properties>
             <Property name="text" type="java.lang.String" value="FootBall"/>
           </Properties>
@@ -160,7 +170,7 @@
                   <Component id="jButtonClassement" max="32767" attributes="0"/>
                   <Component id="jButtonCalendrier" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="291" max="32767" attributes="0"/>
+              <EmptySpace pref="353" max="32767" attributes="0"/>
               <Component id="jPanelSondage" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>

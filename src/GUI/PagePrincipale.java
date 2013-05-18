@@ -44,7 +44,9 @@ public class PagePrincipale extends javax.swing.JFrame {
         jLabelSondageQuestion = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAcceuil = new javax.swing.JMenu();
-        jMenuFootChampionnat = new javax.swing.JMenu();
+        jMenuMembre = new javax.swing.JMenu();
+        jMenuAdmin = new javax.swing.JMenu();
+        jMenuFoot = new javax.swing.JMenu();
         jMenuItemFootChampionnat = new javax.swing.JMenuItem();
         jMenuItemFootCoupe = new javax.swing.JMenuItem();
         jMenuItemFootCL = new javax.swing.JMenuItem();
@@ -143,7 +145,13 @@ public class PagePrincipale extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenuAcceuil);
 
-        jMenuFootChampionnat.setText("FootBall");
+        jMenuMembre.setText("Espace membre");
+        jMenuBar1.add(jMenuMembre);
+
+        jMenuAdmin.setText("Espace administration");
+        jMenuBar1.add(jMenuAdmin);
+
+        jMenuFoot.setText("FootBall");
 
         jMenuItemFootChampionnat.setText("Championnat");
         jMenuItemFootChampionnat.addActionListener(new java.awt.event.ActionListener() {
@@ -151,21 +159,21 @@ public class PagePrincipale extends javax.swing.JFrame {
                 jMenuItemFootChampionnatActionPerformed(evt);
             }
         });
-        jMenuFootChampionnat.add(jMenuItemFootChampionnat);
+        jMenuFoot.add(jMenuItemFootChampionnat);
 
         jMenuItemFootCoupe.setText("Coupe");
-        jMenuFootChampionnat.add(jMenuItemFootCoupe);
+        jMenuFoot.add(jMenuItemFootCoupe);
 
         jMenuItemFootCL.setText("Ligue des champions");
-        jMenuFootChampionnat.add(jMenuItemFootCL);
+        jMenuFoot.add(jMenuItemFootCL);
 
         jMenuItemFootListJoueur.setText("Liste des joueurs");
-        jMenuFootChampionnat.add(jMenuItemFootListJoueur);
+        jMenuFoot.add(jMenuItemFootListJoueur);
 
         jMenuItemFootPalmares.setText("Palmares");
-        jMenuFootChampionnat.add(jMenuItemFootPalmares);
+        jMenuFoot.add(jMenuItemFootPalmares);
 
-        jMenuBar1.add(jMenuFootChampionnat);
+        jMenuBar1.add(jMenuFoot);
 
         jMenuBaske.setText("BasketBall");
 
@@ -223,7 +231,7 @@ public class PagePrincipale extends javax.swing.JFrame {
                     .addComponent(jButtonLastMatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonClassement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonCalendrier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 353, Short.MAX_VALUE)
                 .addComponent(jPanelSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -306,10 +314,11 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSondage;
     private javax.swing.JLabel jLabelSondageQuestion;
     private javax.swing.JMenu jMenuAcceuil;
+    private javax.swing.JMenu jMenuAdmin;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuBaske;
     private javax.swing.JMenu jMenuContact;
-    private javax.swing.JMenu jMenuFootChampionnat;
+    private javax.swing.JMenu jMenuFoot;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemBaskeCL1;
@@ -325,6 +334,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemStaffEducateur;
     private javax.swing.JMenuItem jMenuItemStaffEntreneur;
     private javax.swing.JMenuItem jMenuItemStaffPresident;
+    private javax.swing.JMenu jMenuMembre;
     private javax.swing.JMenu jMenuPresse;
     private javax.swing.JMenu jMenuStaff;
     private javax.swing.JPanel jPanelSondage;

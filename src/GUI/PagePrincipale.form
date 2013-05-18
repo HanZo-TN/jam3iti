@@ -94,7 +94,7 @@
                   <Component id="jButtonClassement" max="32767" attributes="0"/>
                   <Component id="jButtonCalendrier" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="291" max="32767" attributes="0"/>
+              <EmptySpace pref="524" max="32767" attributes="0"/>
               <Component id="jPanelSondage" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -110,7 +110,7 @@
                       <Component id="jButtonLastMatch" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonClassement" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonCalendrier" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -118,7 +118,7 @@
                       <Component id="jPanelSondage" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="63" max="32767" attributes="0"/>
+              <EmptySpace pref="347" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

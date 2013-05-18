@@ -2,6 +2,8 @@
 
 <Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupSondageChoix">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenuAcceuil">
@@ -53,7 +55,6 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -70,13 +71,158 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="531" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jButtonNextMatch" max="32767" attributes="0"/>
+                  <Component id="jButtonLastMatch" max="32767" attributes="0"/>
+                  <Component id="jButtonClassement" max="32767" attributes="0"/>
+                  <Component id="jButtonCalendrier" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="291" max="32767" attributes="0"/>
+              <Component id="jPanelSondage" min="-2" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="289" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="jButtonNextMatch" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonLastMatch" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonClassement" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonCalendrier" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jPanelSondage" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="jButtonNextMatch">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prochain Match"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonLastMatch">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dernier Match"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonClassement">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Classement"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonCalendrier">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Calendrier"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="jPanelSondage">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jButtonVote" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonRes" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jRadioButtonSondageChoix2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRadioButtonSondageChoix3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Component id="jLabelSondageQuestion" min="-2" max="-2" attributes="0"/>
+                          <Component id="jRadioButtonSondageChoix1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabelSondage" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jLabelSondage" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Component id="jLabelSondageQuestion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jRadioButtonSondageChoix1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jRadioButtonSondageChoix2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jRadioButtonSondageChoix3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButtonVote" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabelSondage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sondage"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRadioButtonSondageChoix1">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupSondageChoix"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Choix 1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRadioButtonSondageChoix2">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupSondageChoix"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Choix 2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRadioButtonSondageChoix3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Choix 3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonVote">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vote"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonRes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Resultat"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelSondageQuestion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Question ?"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>

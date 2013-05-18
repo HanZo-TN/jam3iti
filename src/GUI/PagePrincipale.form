@@ -18,6 +18,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="FootBall"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFootChampionnat">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Championnat"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemFootChampionnatActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuBaske">
           <Properties>
@@ -29,9 +39,14 @@
             <Property name="text" type="java.lang.String" value="Staff"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemStaffEntreneur">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Entreneur"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemStaffEducateur">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="educateur Physique"/>
               </Properties>
             </MenuItem>
           </SubComponents>

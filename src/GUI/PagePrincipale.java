@@ -43,9 +43,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAcceuil = new javax.swing.JMenu();
         jMenuFoot = new javax.swing.JMenu();
+        jMenuItemFootChampionnat = new javax.swing.JMenuItem();
         jMenuBaske = new javax.swing.JMenu();
         jMenuStaff = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemStaffEntreneur = new javax.swing.JMenuItem();
+        jMenuItemStaffEducateur = new javax.swing.JMenuItem();
         jMenuPresse = new javax.swing.JMenu();
         jMenuContact = new javax.swing.JMenu();
 
@@ -125,6 +127,15 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuBar1.add(jMenuAcceuil);
 
         jMenuFoot.setText("FootBall");
+
+        jMenuItemFootChampionnat.setText("Championnat");
+        jMenuItemFootChampionnat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFootChampionnatActionPerformed(evt);
+            }
+        });
+        jMenuFoot.add(jMenuItemFootChampionnat);
+
         jMenuBar1.add(jMenuFoot);
 
         jMenuBaske.setText("BasketBall");
@@ -132,8 +143,11 @@ public class PagePrincipale extends javax.swing.JFrame {
 
         jMenuStaff.setText("Staff");
 
-        jMenuItem1.setText("Entreneur");
-        jMenuStaff.add(jMenuItem1);
+        jMenuItemStaffEntreneur.setText("Entreneur");
+        jMenuStaff.add(jMenuItemStaffEntreneur);
+
+        jMenuItemStaffEducateur.setText("educateur Physique");
+        jMenuStaff.add(jMenuItemStaffEducateur);
 
         jMenuBar1.add(jMenuStaff);
 
@@ -186,6 +200,10 @@ public class PagePrincipale extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuAcceuilMouseClicked
 
+    private void jMenuItemFootChampionnatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFootChampionnatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemFootChampionnatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,7 +253,9 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuBaske;
     private javax.swing.JMenu jMenuContact;
     private javax.swing.JMenu jMenuFoot;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemFootChampionnat;
+    private javax.swing.JMenuItem jMenuItemStaffEducateur;
+    private javax.swing.JMenuItem jMenuItemStaffEntreneur;
     private javax.swing.JMenu jMenuPresse;
     private javax.swing.JMenu jMenuStaff;
     private javax.swing.JPanel jPanelSondage;

@@ -4,6 +4,16 @@
  */
 package GUI;
 
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author rednaks
@@ -14,7 +24,11 @@ public class PageAdministrateur extends javax.swing.JFrame {
      * Creates new form PageAdministrateur
      */
     public PageAdministrateur() {
-        initComponents();
+        if(authentification())
+            initComponents();
+        else {
+            System.exit(0);
+        }
     }
 
     /**
@@ -88,7 +102,24 @@ public class PageAdministrateur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonGestionMatchsActionPerformed
 
-    /**
+    private boolean authentification(){
+        
+        int essai = 3;
+        
+        AuthDialog ad = new AuthDialog();
+        
+        while( essai > 0){
+            HashMap res = ad.showDialog();
+            if(res.get("login").equals("admin@admin") && res.get("password").equals("pass"))
+                return true;
+          essai--;
+        }
+        return false;
+        
+        
+    }
+    
+     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -121,6 +152,55 @@ public class PageAdministrateur extends javax.swing.JFrame {
                 new PageAdministrateur().setVisible(true);
             }
         });
+    }
+    private class AuthDialog extends JDialog {
+    
+        HashMap result = new HashMap<String, String>();
+        javax.swing.JPanel panel = new JPanel();
+        
+        javax.swing.JDialog loginDialog = new JDialog(this);
+        
+        javax.swing.JLabel emailLabel = new JLabel("Email");
+        javax.swing.JTextField emailTextField = new JTextField();
+
+        javax.swing.JLabel passwordLabel = new JLabel("Mot de passe");
+        javax.swing.JTextField passwordTextField = new JTextField();
+        
+        javax.swing.JButton loginButton = new JButton("Login");
+        
+        public AuthDialog() {
+            setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL); // Pour bloquer la dialog lorsque setVisible est à true !
+         
+            loginButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    result.put("login", emailTextField.getText());
+                    result.put("password", passwordTextField.getText());
+                    setVisible(false);
+                    dispose();
+                }
+            });
+            loginButton.setSize(50, 15);
+            setTitle("Authentification");
+            setSize(300, 200);
+            panel.setLayout(new GridLayout(3, 2));
+            panel.add(emailLabel);
+            panel.add(emailTextField);
+            panel.add(passwordLabel);
+            panel.add(passwordTextField);
+            panel.add(loginButton);
+            this.add(panel);
+        }
+        
+        public HashMap showDialog() {
+            setVisible(true);
+            return result;
+        }
+        
+        
+        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGestionJoueurs;

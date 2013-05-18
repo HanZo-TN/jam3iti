@@ -89,6 +89,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         });
 
         jButtonLastMatch.setText("Dernier Match");
+        jButtonLastMatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLastMatchActionPerformed(evt);
+            }
+        });
 
         jButtonClassement.setText("Classement");
 
@@ -325,6 +330,15 @@ public class PagePrincipale extends javax.swing.JFrame {
       // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNextMatchActionPerformed
 
+    private void jButtonLastMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLastMatchActionPerformed
+      jPanelBaseContainer.setVisible(false); // pour actualiser on doit le cacher, le rempir puis le faire apparaitre
+      jPanelBaseContainer.removeAll();
+      System.out.println("Setting lastMatchPanel");
+      jPanelBaseContainer.add(panelLastMatch);
+      jPanelBaseContainer.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLastMatchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,6 +349,7 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.add(panelHome);
         jPanelBaseContainer.setVisible(true);
         initNextMatchPanel();
+        initLastMatchPanel();
     
         
     }
@@ -366,6 +381,15 @@ public class PagePrincipale extends javax.swing.JFrame {
         panelNextMatch.setLayout(new GridLayout(1,1));
         panelNextMatch.add(nextMatchTextPane);
         
+    }
+    
+    private void initLastMatchPanel(){
+        panelLastMatch = new JPanel();
+        lastMatchTextPane = new JTextPane();
+        lastMatchTextPane.setText("OM vs Lyon 15/03/2013");
+        lastMatchTextPane.setEditable(false);
+        panelLastMatch.setLayout(new GridLayout(1,1));
+        panelLastMatch.add(lastMatchTextPane);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -416,6 +440,10 @@ public class PagePrincipale extends javax.swing.JFrame {
     
     // NextMatch Begin
     private javax.swing.JTextPane nextMatchTextPane;
+    // NextMatch END
+    
+    // NextMatch Begin
+    private javax.swing.JTextPane lastMatchTextPane;
     // NextMatch END
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;

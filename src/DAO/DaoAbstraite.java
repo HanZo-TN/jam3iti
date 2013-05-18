@@ -5,6 +5,7 @@
 package DAO;
 import java.sql.*;
 import Technique.SingletonConnection;
+import java.util.List;
 
 /**
  *
@@ -19,5 +20,6 @@ public abstract class DaoAbstraite<T> {
 	public abstract void delete(T obj);
 	public abstract void update(T obj);
 	public abstract T find(int id);
+        public abstract List<T> findAll();
     
 }

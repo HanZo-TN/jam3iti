@@ -6,6 +6,7 @@ package DAO;
 
 import Metier.Joueur;
 import java.sql.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -73,7 +74,7 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
 
     @Override
     public void delete(Joueur obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
@@ -83,6 +84,49 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
 
     @Override
     public Joueur find(int id) {
+            Joueur found = null; 
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+        
+        try {
+            pst=this.connect().prepareStatement("select * from Joueur where id= ?");
+            pst.setInt(1, id);
+            rs=pst.executeQuery();
+            System.out.println("recherche individuelle réussie");
+            if (rs.next()) {
+               
+                found = new Joueur(rs.getInt("id"), rs.getString(",om"), rs.getString("prenom"), rs.getDate("dateNaiss"), rs.getString("post"),rs.getFloat("salaire"), rs.getFloat("poid"), rs.getFloat("taille"), rs.getString("email"));
+            
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+        }finally{
+            
+            
+                try {
+                    if (rs != null)
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                }
+                
+                 
+                try {
+                    if (pst != null)
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                }
+                
+        }
+        return found;
+    }
+    
+
+    @Override
+    public List<Joueur> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

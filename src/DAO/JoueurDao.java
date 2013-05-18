@@ -74,6 +74,25 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
 
     @Override
     public void delete(Joueur obj) {
+        PreparedStatement pst = null;
+        
+        try {
+            
+            pst = this.connect().prepareStatement("delete from Joueur where id=? ;");
+            pst.setInt(1, obj.getIdJoueur());
+            System.out.println("suppression effectuer");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "suppression echoué", ex);
+        }finally{
+            
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
+            }
+        }
         
     }
 

@@ -42,6 +42,7 @@ public class PagePrincipale extends javax.swing.JFrame {
         jButtonVote = new javax.swing.JButton();
         jButtonRes = new javax.swing.JButton();
         jLabelSondageQuestion = new javax.swing.JLabel();
+        jPanelBaseContainer = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAcceuil = new javax.swing.JMenu();
         jMenuMembre = new javax.swing.JMenu();
@@ -135,6 +136,17 @@ public class PagePrincipale extends javax.swing.JFrame {
                     .addComponent(jButtonVote)
                     .addComponent(jButtonRes))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelBaseContainerLayout = new javax.swing.GroupLayout(jPanelBaseContainer);
+        jPanelBaseContainer.setLayout(jPanelBaseContainerLayout);
+        jPanelBaseContainerLayout.setHorizontalGroup(
+            jPanelBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 372, Short.MAX_VALUE)
+        );
+        jPanelBaseContainerLayout.setVerticalGroup(
+            jPanelBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 514, Short.MAX_VALUE)
         );
 
         jMenuAcceuil.setText("Acceuil");
@@ -236,7 +248,9 @@ public class PagePrincipale extends javax.swing.JFrame {
                     .addComponent(jButtonLastMatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonClassement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonCalendrier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -254,8 +268,10 @@ public class PagePrincipale extends javax.swing.JFrame {
                         .addComponent(jButtonCalendrier))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jPanelSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(347, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanelSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanelBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -316,6 +332,12 @@ public class PagePrincipale extends javax.swing.JFrame {
             }
         });
     }
+    // Le contenu pour jPanelBaseContainer 
+    private javax.swing.JPanel panelNextMatch;
+    private javax.swing.JPanel panelLastMatch;
+    private javax.swing.JPanel panelClassement;
+    private javax.swing.JPanel panelCalendar;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;
@@ -350,6 +372,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuMembre;
     private javax.swing.JMenu jMenuPresse;
     private javax.swing.JMenu jMenuStaff;
+    private javax.swing.JPanel jPanelBaseContainer;
     private javax.swing.JPanel jPanelSondage;
     private javax.swing.JRadioButton jRadioButtonSondageChoix1;
     private javax.swing.JRadioButton jRadioButtonSondageChoix2;

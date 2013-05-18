@@ -4,11 +4,13 @@
  */
 package GUI;
  
+import com.sun.xml.internal.ws.api.pipe.NextAction;
 import java.awt.GridLayout;
 import java.awt.ScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextPane;
 
 
 /**
@@ -311,7 +313,11 @@ public class PagePrincipale extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuAdminMouseClicked
 
     private void jButtonNextMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNextMatchActionPerformed
-
+      jPanelBaseContainer.setVisible(false); // pour actualiser on doit le cacher, le rempir puis le faire apparaitre
+      jPanelBaseContainer.removeAll();
+      System.out.println("Setting nextMatchPanel");
+      jPanelBaseContainer.add(panelNextMatch);
+      jPanelBaseContainer.setVisible(true);
       // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNextMatchActionPerformed
 
@@ -324,7 +330,8 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.setLayout(new GridLayout(1, 1));
         jPanelBaseContainer.add(panelHome);
         jPanelBaseContainer.setVisible(true);
-        
+        initNextMatchPanel();
+    
         
     }
     
@@ -339,10 +346,23 @@ public class PagePrincipale extends javax.swing.JFrame {
                 }
                 , new String[]{"Titre", "Date"} );
         scrollPane = new JScrollPane(tableNews);
+        synopsysPane = new JTextPane();
+        synopsysPane.setEditable(false);
+        synopsysPane.setText("La CFA2 olympienne reçoit Aubagne ce samedi au stade Paul-Le Cesne (18h) dans un match décisif pour la montée.");
         panelHome.add(scrollPane);
+        panelHome.add(synopsysPane);
         panelHome.setVisible(true);
     }
 
+    private void initNextMatchPanel(){
+        panelNextMatch = new JPanel();
+        nextMatchTextPane = new JTextPane();
+        nextMatchTextPane.setText("OM vs PSG 12/12/2013");
+        nextMatchTextPane.setEditable(false);
+        panelNextMatch.setLayout(new GridLayout(1,1));
+        panelNextMatch.add(nextMatchTextPane);
+        
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -376,16 +396,23 @@ public class PagePrincipale extends javax.swing.JFrame {
     }
     // Le contenu pour jPanelBaseContainer 
     
+    /* Home Begin*/
     private javax.swing.JPanel panelHome;
     private javax.swing.JTable tableNews;
     private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTextPane synopsysPane;
+    /* Home End*/
     
     // Begin : Pour Les 4 boutons à gauche
     private javax.swing.JPanel panelNextMatch;
     private javax.swing.JPanel panelLastMatch;
     private javax.swing.JPanel panelClassement;
     private javax.swing.JPanel panelCalendar;
-    // End : Pour Les 4 boutons à gauche 
+    // End : Pour Les 4 boutons à gauche
+    
+    // NextMatch Begin
+    private javax.swing.JTextPane nextMatchTextPane;
+    // NextMatch END
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;

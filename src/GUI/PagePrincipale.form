@@ -165,16 +165,16 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jButtonNextMatch" max="32767" attributes="0"/>
                   <Component id="jButtonLastMatch" max="32767" attributes="0"/>
                   <Component id="jButtonClassement" max="32767" attributes="0"/>
                   <Component id="jButtonCalendrier" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanelBaseContainer" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Component id="jPanelBaseContainer" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanelSondage" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -197,11 +197,11 @@
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanelSondage" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanelBaseContainer" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanelBaseContainer" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -211,6 +211,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Prochain Match"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNextMatchActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonLastMatch">
       <Properties>

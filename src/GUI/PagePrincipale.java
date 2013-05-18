@@ -4,6 +4,12 @@
  */
 package GUI;
  
+import java.awt.GridLayout;
+import java.awt.ScrollPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 
 /**
  *
@@ -16,6 +22,7 @@ public class PagePrincipale extends javax.swing.JFrame {
      */
     public PagePrincipale() {
         initComponents();
+        initPanels();
     }
 
     /**
@@ -73,6 +80,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButtonNextMatch.setText("Prochain Match");
+        jButtonNextMatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNextMatchActionPerformed(evt);
+            }
+        });
 
         jButtonLastMatch.setText("Dernier Match");
 
@@ -249,7 +261,7 @@ public class PagePrincipale extends javax.swing.JFrame {
                     .addComponent(jButtonClassement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonCalendrier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanelBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelBaseContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -270,8 +282,8 @@ public class PagePrincipale extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanelSondage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                            .addComponent(jPanelBaseContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -298,9 +310,39 @@ public class PagePrincipale extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuAdminMouseClicked
 
+    private void jButtonNextMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNextMatchActionPerformed
+
+      // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNextMatchActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    private void initPanels(){
+        initHomePanel();
+        System.out.println("Adding Home panel");
+        jPanelBaseContainer.setLayout(new GridLayout(1, 1));
+        jPanelBaseContainer.add(panelHome);
+        jPanelBaseContainer.setVisible(true);
+        
+        
+    }
+    
+    private void initHomePanel(){
+        panelHome = new JPanel();
+        panelHome.setLayout(new GridLayout(2, 1));
+        
+        tableNews = new JTable(new Object[][]
+                {{"«Blow Up» : nouveau single pour Kid Francescoli","18/05/2013 13:03"},
+                 {"La réserve dans le sprint final","18/05/2013 08:28"},
+                 {"Avec passion dans le Chaudron","17/05/2013 18:29"}
+                }
+                , new String[]{"Titre", "Date"} );
+        scrollPane = new JScrollPane(tableNews);
+        panelHome.add(scrollPane);
+        panelHome.setVisible(true);
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -333,11 +375,17 @@ public class PagePrincipale extends javax.swing.JFrame {
         });
     }
     // Le contenu pour jPanelBaseContainer 
+    
+    private javax.swing.JPanel panelHome;
+    private javax.swing.JTable tableNews;
+    private javax.swing.JScrollPane scrollPane;
+    
+    // Begin : Pour Les 4 boutons à gauche
     private javax.swing.JPanel panelNextMatch;
     private javax.swing.JPanel panelLastMatch;
     private javax.swing.JPanel panelClassement;
     private javax.swing.JPanel panelCalendar;
-    
+    // End : Pour Les 4 boutons à gauche 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;

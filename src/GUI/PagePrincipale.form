@@ -219,6 +219,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButtonSondageChoix3">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroupSondageChoix"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Choix 3"/>
           </Properties>
         </Component>

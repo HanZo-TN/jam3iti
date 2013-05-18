@@ -69,6 +69,7 @@ public class PagePrincipale extends javax.swing.JFrame {
         buttonGroupSondageChoix.add(jRadioButtonSondageChoix2);
         jRadioButtonSondageChoix2.setText("Choix 2");
 
+        buttonGroupSondageChoix.add(jRadioButtonSondageChoix3);
         jRadioButtonSondageChoix3.setText("Choix 3");
 
         jButtonVote.setText("Vote");

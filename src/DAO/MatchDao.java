@@ -58,7 +58,7 @@ public class MatchDao extends DaoAbstraite<Match>{
             if(pst != null)
             pst.close();
         } catch (SQLException ex) {
-            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
+            Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
         }
             
         }
@@ -88,7 +88,7 @@ public class MatchDao extends DaoAbstraite<Match>{
                 if(pst != null)
                 pst.close();
             } catch (SQLException ex) {
-                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
+                Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
             }
         }
     }
@@ -115,7 +115,7 @@ public class MatchDao extends DaoAbstraite<Match>{
                 if(pst != null)
                 pst.close();
             } catch (SQLException ex) {
-                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+                Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
             }
             
         }

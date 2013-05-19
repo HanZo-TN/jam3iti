@@ -92,7 +92,27 @@ public class TitreDao extends DaoAbstraite<Titre>{
 
     @Override
     public void update(Titre obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update Titre set nom=?, annee=?, where id=? ;");
+            pst.setString(1, obj.getNom());
+            pst.setString(2, obj.getAnnee());
+            pst.setInt(3, obj.getId());
+            pst.executeUpdate();
+            
+            System.out.println("modification Titre effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
     }
 
     @Override

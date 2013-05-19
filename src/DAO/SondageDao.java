@@ -163,7 +163,42 @@ public class SondageDao extends DaoAbstraite<Sondage>{
 
     @Override
     public List<Sondage> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Sondage> listS = new ArrayList<Sondage>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = this.connect().createStatement();
+            rs = st.executeQuery("select * from Sondage");
+            System.out.println("recherche général effectuée");
+            
+            
+            while (rs.next()) {
+              
+                
+                Sondage sd = new Sondage(rs.getInt("id"), rs.getString("question"), rs.getString("choixa"), rs.getString("choixb"), rs.getString("choixc"));
+                
+                
+               
+                               listS.add(sd);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "recherche general echoué", ex);
+        }finally{
+            try {
+                if(rs != null)
+                rs.close();
+                if(st != null)
+                st.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "liberation statement || resultset echoué", ex);
+            }
+        }
+        
+        
+        return listS;
     }
     
 }

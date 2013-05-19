@@ -93,7 +93,30 @@ public class MembreDao extends DaoAbstraite<Membre>{
 
     @Override
     public void update(Membre obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update Membre set status=?, nom=?, prenom=?, email=?, mdp=? where id=? ;");
+            pst.setString(1, obj.getStatus());
+            pst.setString(2, obj.getNomMembre());
+            pst.setString(3, obj.getPrenomMembre());
+            pst.setString(4, obj.getEmail());
+            pst.setString(5, obj.getMdp());
+            pst.setInt(6, obj.getIdMembre());
+            pst.executeUpdate();
+            
+            System.out.println("modification Membre effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
     }
 
     @Override

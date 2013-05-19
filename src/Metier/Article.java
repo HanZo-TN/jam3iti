@@ -38,6 +38,10 @@ public class Article {
         return date;
     }
 
+    public Object [] preparedArticle(){
+        return new Object [] {this.getTitlre(), this.getDate().toString()};
+        
+    }
     public void setDate(Date date) {
         this.date = date;
     }

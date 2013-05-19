@@ -4,11 +4,16 @@
  */
 package GUI;
  
+import DAO.ArticleDao;
+import Metier.Article;
+import RSS.RssFeadReader;
 import com.sun.xml.internal.ws.api.pipe.NextAction;
 import java.awt.GridLayout;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
+import javax.swing.table.TableModel;
 
 
 /**
@@ -398,12 +404,33 @@ public class PagePrincipale extends javax.swing.JFrame {
     private void initHomePanel(){
         panelHome = new JPanel();
         panelHome.setLayout(new GridLayout(2, 1));
-        
-        tableNews = new JTable(new Object[][]
-                {{"«Blow Up» : nouveau single pour Kid Francescoli","18/05/2013 13:03"},
-                 {"La réserve dans le sprint final","18/05/2013 08:28"},
-                 {"Avec passion dans le Chaudron","17/05/2013 18:29"}
+        ArticleDao ad = ArticleDao.getInstance();
+        List<Article> storedAr = ad.findAll();
+        if(storedAr.size() == 0)
+        {
+            RssFeadReader rf = new RssFeadReader("http://www.psg.fr/index_rss.php?id=31&lng=fr");
+            List<Article> fetchedAr = rf.getItems();
+            // Store to data base;
+            System.out.println(fetchedAr.get(0));
+            Iterator it = fetchedAr.iterator();
+            while(it.hasNext()){
+                Article buffer = (Article)it.next();
+                if(!buffer.equals(ad.find(buffer.getId()))){
+                    ad.insert(buffer);
                 }
+            }
+        }
+        storedAr = ad.findAll();
+        Object[][] o = new Object[storedAr.size()][2];
+        int index = 0;
+        for (Article s : storedAr) {
+            
+            o[index][0] = s.getTitlre();
+            o[index][1] = s.getDate();
+            index++;
+        }
+        
+        tableNews = new JTable(o
                 , new String[]{"Titre", "Date"} );
         scrollPane = new JScrollPane(tableNews);
         synopsysPane = new JTextPane();

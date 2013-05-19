@@ -162,7 +162,42 @@ public class StaffDao extends DaoAbstraite<Staff>{
 
     @Override
     public List<Staff> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Staff> listS = new ArrayList<Staff>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = this.connect().createStatement();
+            rs = st.executeQuery("select * from Staff");
+            System.out.println("recherche général effectuée");
+            
+            
+            while (rs.next()) {
+              
+                
+                Staff stf = new Staff(rs.getInt("id"), rs.getString("fonction"), rs.getString("nom"), rs.getString("prenom"), rs.getInt("age"));
+                
+                
+               
+                               listS.add(stf);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "recherche general echoué", ex);
+        }finally{
+            try {
+                if(rs != null)
+                rs.close();
+                if(st != null)
+                st.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "liberation statement || resultset echoué", ex);
+            }
+        }
+        
+        
+        return listS;
     }
     
 }

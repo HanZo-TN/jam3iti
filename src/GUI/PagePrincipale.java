@@ -542,6 +542,10 @@ public class PagePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("[Championat-foot] Affichage Classement Joueur");
+                panelChampionatFootContainer.setVisible(false);
+                panelChampionatFootContainer.removeAll();
+                panelChampionatFootContainer.add(scrollPaneFootClassementJoueur);
+                panelChampionatFootContainer.setVisible(true);
             }
         });
      
@@ -549,6 +553,7 @@ public class PagePrincipale extends javax.swing.JFrame {
         initChampionatFootClassementPanel();
         panelChampionatFootContainer.add(scrollPaneFootClassement); // Affichage par défaut
         initChampionatFootCalendarPanel();
+        initChampionatFootClassementJoueurPanel();
     }
     
     private void initChampionatFootClassementPanel(){
@@ -570,6 +575,18 @@ public class PagePrincipale extends javax.swing.JFrame {
         }
                 , new String[] {"Date", "Equipe 1", "Score", "Equipe 2"});
         scrollPaneFootCalendar = new JScrollPane(tableFootCalendar);
+    }
+    
+    private void initChampionatFootClassementJoueurPanel(){
+        tableFootClassementJoueur = new JTable(new Object[][]
+        {
+            {"Rednaks", "Over 900000"},
+            {"Rammeh","21"},
+            {"Zaraki", "20"}
+        }
+        , new String[] { "Joueur", "N Buts"});
+        tableFootClassementJoueur.setEnabled(false);
+        scrollPaneFootClassementJoueur = new JScrollPane(tableFootClassementJoueur);
     }
     /************************* FootPanels END ****************************/
     public static void main(String args[]) {

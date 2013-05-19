@@ -322,6 +322,7 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.removeAll();
         jPanelBaseContainer.add(panelChampionatFootBaseContainer);
         panelChampionatFootBaseContainer.setVisible(true);
+        panelChampionatFootContainer.add(scrollPaneFootClassement); // Affichage par défaut
         jPanelBaseContainer.setVisible(true);
     }//GEN-LAST:event_jMenuItemFootChampionnatActionPerformed
 
@@ -551,7 +552,6 @@ public class PagePrincipale extends javax.swing.JFrame {
      
         panelChampionatFootContainer.setLayout(new GridLayout(1, 1));
         initChampionatFootClassementPanel();
-        panelChampionatFootContainer.add(scrollPaneFootClassement); // Affichage par défaut
         initChampionatFootCalendarPanel();
         initChampionatFootClassementJoueurPanel();
     }

@@ -73,7 +73,26 @@ public class ArticleDao extends DaoAbstraite<Article> {
 
     @Override
     public void delete(Article obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        PreparedStatement pst = null;
+        
+        try {
+            
+            pst = this.connect().prepareStatement("DELETE FROM Article where id=?;");
+            pst.setInt(1, obj.getId());
+            pst.executeUpdate();
+            System.out.println("suppression effectuer");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "suppression echoué", ex);
+        }finally{
+            
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
+            }
+        }        
     }
 
     @Override

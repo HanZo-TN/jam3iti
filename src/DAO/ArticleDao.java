@@ -97,7 +97,28 @@ public class ArticleDao extends DaoAbstraite<Article> {
 
     @Override
     public void update(Article obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update Article set titre=?, resume=?, date=? where id=? ;");
+            pst.setString(1, obj.getTitlre());
+            pst.setString(2, obj.getResume());
+            pst.setDate(3, obj.getDate());
+            pst.setInt(4, obj.getId());     
+            pst.executeUpdate();
+            
+            System.out.println("modification Article effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
     }
 
     @Override

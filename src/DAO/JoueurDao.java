@@ -79,8 +79,9 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
         
         try {
             
-            pst = this.connect().prepareStatement("delete from Joueur where id=? ;");
+            pst = this.connect().prepareStatement("DELETE FROM Joueur where id=?;");
             pst.setInt(1, obj.getIdJoueur());
+            pst.executeUpdate();
             System.out.println("suppression effectuer");
             
         } catch (SQLException ex) {
@@ -141,7 +142,7 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
             System.out.println("recherche individuelle réussie");
             if (rs.next()) {
                
-                found = new Joueur(rs.getInt("id"), rs.getString(",om"), rs.getString("prenom"), rs.getDate("dateNaiss"), rs.getString("post"),rs.getFloat("salaire"), rs.getFloat("poid"), rs.getFloat("taille"), rs.getString("email"));
+                found = new Joueur(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getDate("dateNaiss"), rs.getString("post"),rs.getFloat("salaire"), rs.getFloat("poid"), rs.getFloat("taille"), rs.getString("email"));
             
                 
             }

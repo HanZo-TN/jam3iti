@@ -5,6 +5,7 @@
 package DAO;
 
 import Metier.Article;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -42,7 +43,32 @@ public class ArticleDao extends DaoAbstraite<Article> {
 
     @Override
     public Article insert(Article obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        PreparedStatement pst = null;
+        try {
+                            pst = this.connect().prepareStatement("INSERT INTO Article (titre, resume, date, id) VALUES (?,?,?,?);");
+                            pst.setString(1, obj.getTitlre());
+                            pst.setString(2, obj.getResume());
+                            pst.setDate(3, obj.getDate());
+                            pst.setInt(4, obj.getId());                           
+                            pst.executeUpdate();
+                            System.out.println("insertion Article terminé");
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "insertion echoué", ex);
+        }finally{
+        
+            try {
+            if(pst != null)
+            pst.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
+        }
+            
+        }
+        
+        
+        
+        return obj;
+
     }
 
     @Override

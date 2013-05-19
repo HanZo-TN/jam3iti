@@ -4,6 +4,7 @@
  */
 package Metier;
 
+import java.sql.Date;
 /**
  *
  * @author rednaks
@@ -13,15 +14,16 @@ public class Article {
     private int id;
     private String titlre;
     private String resume;
-    private String date;
+    private Date date;
     
     public Article(){
         
     }
-    public Article(int id, String titlre, String resume) {
+    public Article(int id, String titlre, String resume, Date date) {
         this.id = id;
         this.titlre = titlre;
         this.resume = resume;
+        this.date = date;
     }
 
     public int getId() {
@@ -32,11 +34,11 @@ public class Article {
         this.id = id;
     }
     
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     public void setTitlre(String titlre) {

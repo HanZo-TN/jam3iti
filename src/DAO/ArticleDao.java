@@ -6,6 +6,7 @@ package DAO;
 
 import Metier.Article;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -123,7 +124,45 @@ PreparedStatement pst = null;
 
     @Override
     public Article find(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Article found = null; 
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        
+        try {
+            pst=this.connect().prepareStatement("select * from Article where id= ?");
+            pst.setInt(1, id);
+            rs=pst.executeQuery();
+            System.out.println("recherche individuelle réussie");
+            if (rs.next()) {
+               
+                found = new Article(rs.getInt("id"), rs.getString("titre"), rs.getString("resume"), rs.getDate("date"));
+            
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+        }finally{
+            
+            
+                try {
+                    if (rs != null)
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                }
+                
+                 
+                try {
+                    if (pst != null)
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                }
+                
+        }
+        return found;
+
     }
 
     @Override

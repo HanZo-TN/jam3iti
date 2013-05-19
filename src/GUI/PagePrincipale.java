@@ -430,8 +430,7 @@ public class PagePrincipale extends javax.swing.JFrame {
             index++;
         }
         
-        tableNews = new JTable(o
-                , new String[]{"Titre", "Date"} );
+        tableNews = new JTable(o, new String[]{"Titre", "Date"} );
         scrollPane = new JScrollPane(tableNews);
         synopsysPane = new JTextPane();
         synopsysPane.setEditable(false);

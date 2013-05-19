@@ -71,12 +71,31 @@ public class MatchDao extends DaoAbstraite<Match>{
 
     @Override
     public void delete(Match obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        
+        try {
+            
+            pst = this.connect().prepareStatement("DELETE FROM Match where id=?;");
+            pst.setInt(1, obj.getId());
+            pst.executeUpdate();
+            System.out.println("suppression effectuer");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "suppression echoué", ex);
+        }finally{
+            
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
+            }
+        }
     }
 
     @Override
     public void update(Match obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

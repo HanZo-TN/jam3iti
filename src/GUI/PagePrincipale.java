@@ -547,6 +547,7 @@ public class PagePrincipale extends javax.swing.JFrame {
      
         panelChampionatFootContainer.setLayout(new GridLayout(1, 1));
         initChampionatFootClassementPanel();
+        panelChampionatFootContainer.add(scrollPaneFootClassement); // Affichage par défaut
         initChampionatFootCalendarPanel();
     }
     

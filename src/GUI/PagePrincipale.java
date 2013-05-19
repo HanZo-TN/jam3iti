@@ -250,6 +250,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuBaske.add(jMenuItemBaskeListJoueur);
 
         jMenuItemBaskePalmares1.setText("Palmares");
+        jMenuItemBaskePalmares1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBaskePalmares1ActionPerformed(evt);
+            }
+        });
         jMenuBaske.add(jMenuItemBaskePalmares1);
 
         jMenuBar1.add(jMenuBaske);
@@ -403,6 +408,13 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.setVisible(true);
 
     }//GEN-LAST:event_jMenuItemBaskeListJoueurActionPerformed
+
+    private void jMenuItemBaskePalmares1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBaskePalmares1ActionPerformed
+        jPanelBaseContainer.setVisible(false);
+        jPanelBaseContainer.removeAll();
+        jPanelBaseContainer.add(scrollPanelBasketPalmares);
+        jPanelBaseContainer.setVisible(true);
+    }//GEN-LAST:event_jMenuItemBaskePalmares1ActionPerformed
 
     /**
      * @param args the command line arguments

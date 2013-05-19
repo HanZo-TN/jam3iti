@@ -96,7 +96,7 @@ public class SondageDao extends DaoAbstraite<Sondage>{
     public void update(Sondage obj) {
         PreparedStatement pst = null;
         try {
-            pst = this.connect().prepareStatement("update Sondage set question=?, choixa=?, choixb, choixc where id=? ;");
+            pst = this.connect().prepareStatement("update Sondage set question=?, choixa=?, choixb=?, choixc=? where id=? ;");
             pst.setString(1, obj.getQuestion());
             pst.setString(2, obj.getChoixA());
             pst.setString(3, obj.getChoixB());

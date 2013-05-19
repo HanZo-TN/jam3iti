@@ -120,7 +120,44 @@ public class StaffDao extends DaoAbstraite<Staff>{
 
     @Override
     public Staff find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Staff found = null; 
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+        
+        try {
+            pst=this.connect().prepareStatement("select * from Staff where id= ?");
+            pst.setInt(1, id);
+            rs=pst.executeQuery();
+            System.out.println("recherche individuelle réussie");
+            if (rs.next()) {
+               
+                found = new Staff(rs.getInt("id"), rs.getString("fonction"), rs.getString("nom"), rs.getString("prenom"), rs.getInt("age"));
+            
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+        }finally{
+            
+            
+                try {
+                    if (rs != null)
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                }
+                
+                 
+                try {
+                    if (pst != null)
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                }
+                
+        }
+        return found;
     }
 
     @Override

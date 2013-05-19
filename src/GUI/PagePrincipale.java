@@ -28,7 +28,7 @@ public class PagePrincipale extends javax.swing.JFrame {
      */
     public PagePrincipale() {
         initComponents();
-        initPanels();
+        initMainPanels();
         initFootPanels();
     }
 
@@ -367,7 +367,7 @@ public class PagePrincipale extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     /******************  Main Panels BEGIN ************************************/
-    private void initPanels(){
+    private void initMainPanels(){
         initHomePanel();
         System.out.println("Adding Home panel");
         jPanelBaseContainer.setLayout(new GridLayout(1, 1));

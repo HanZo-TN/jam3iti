@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +39,7 @@ public class ArticleDao extends DaoAbstraite<Article> {
             st.executeUpdate("create table Article(id int(4) , titre varchar(255) , resume text , date date  );");
             System.out.println("la table Article est creé");
         } catch (SQLException ex) {
-            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "creation de la table Article echoué", ex);
+            Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "creation de la table Article echoué", ex);
         }
     }
 
@@ -54,14 +55,14 @@ public class ArticleDao extends DaoAbstraite<Article> {
                             pst.executeUpdate();
                             System.out.println("insertion Article terminé");
         } catch (SQLException ex) {
-            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "insertion echoué", ex);
+            Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "insertion echoué", ex);
         }finally{
         
             try {
             if(pst != null)
             pst.close();
         } catch (SQLException ex) {
-            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
+            Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
         }
             
         }
@@ -84,14 +85,14 @@ public class ArticleDao extends DaoAbstraite<Article> {
             System.out.println("suppression effectuer");
             
         } catch (SQLException ex) {
-            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "suppression echoué", ex);
+            Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "suppression echoué", ex);
         }finally{
             
             try {
                 if(pst != null)
                 pst.close();
             } catch (SQLException ex) {
-                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
+                Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
             }
         }        
     }
@@ -110,13 +111,13 @@ PreparedStatement pst = null;
             System.out.println("modification Article effectuée");
             
         } catch (SQLException ex) {
-            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+            Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
         }finally{
             try {
                 if(pst != null)
                 pst.close();
             } catch (SQLException ex) {
-                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+                Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
             }
             
         }
@@ -141,7 +142,7 @@ PreparedStatement pst = null;
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+            Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
         }finally{
             
             
@@ -149,7 +150,7 @@ PreparedStatement pst = null;
                     if (rs != null)
                     rs.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                    Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
                 }
                 
                  
@@ -157,7 +158,7 @@ PreparedStatement pst = null;
                     if (pst != null)
                     pst.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                    Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
                 }
                 
         }
@@ -167,6 +168,41 @@ PreparedStatement pst = null;
 
     @Override
     public List<Article> findAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<Article> listJ = new ArrayList<Article>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = this.connect().createStatement();
+            rs = st.executeQuery("select * from Article");
+            System.out.println("recherche général effectuée");
+            
+            
+            while (rs.next()) {
+              
+                
+                Article ar = new Article(rs.getInt("id"), rs.getString("titre"),rs.getString("resume"),rs.getDate("date"));
+                
+                
+               
+                               listJ.add(ar);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "recherche general echoué", ex);
+        }finally{
+            try {
+                if(rs != null)
+                rs.close();
+                if(st != null)
+                st.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ArticleDao.class.getName()).log(Level.SEVERE, "liberation statement || resultset echoué", ex);
+            }
+        }
+        
+        
+        return listJ;
     }
 }

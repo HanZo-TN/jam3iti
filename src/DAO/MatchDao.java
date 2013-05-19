@@ -123,7 +123,44 @@ public class MatchDao extends DaoAbstraite<Match>{
 
     @Override
     public Match find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Match found = null; 
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+        
+        try {
+            pst=this.connect().prepareStatement("select * from Match where id= ?");
+            pst.setInt(1, id);
+            rs=pst.executeQuery();
+            System.out.println("recherche individuelle réussie");
+            if (rs.next()) {
+               
+                found = new Match(rs.getInt("id"), rs.getString("equipeA"), rs.getString("equipeB"),rs.getInt("scoreA"), rs.getInt("scoreB"), rs.getDate("datematch"));
+            
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+        }finally{
+            
+            
+                try {
+                    if (rs != null)
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                }
+                
+                 
+                try {
+                    if (pst != null)
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                }
+                
+        }
+        return found;
     }
 
     @Override

@@ -163,7 +163,41 @@ public class MembreDao extends DaoAbstraite<Membre>{
 
     @Override
     public List<Membre> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Membre> listM = new ArrayList<Membre>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = this.connect().createStatement();
+            rs = st.executeQuery("select * from Membre");
+            System.out.println("recherche général effectuée");
+            
+            
+            while (rs.next()) {
+              
+                
+                Membre mbr = new Membre(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mdp"), rs.getString("email"), rs.getString("status"));
+            
+               
+                               listM.add(mbr);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "recherche general echoué", ex);
+        }finally{
+            try {
+                if(rs != null)
+                rs.close();
+                if(st != null)
+                st.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "liberation statement || resultset echoué", ex);
+            }
+        }
+        
+        
+        return listM;
     }
     
     

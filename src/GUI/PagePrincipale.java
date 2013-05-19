@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -28,8 +29,8 @@ public class PagePrincipale extends javax.swing.JFrame {
      */
     public PagePrincipale() {
         initComponents();
-        initMainPanels();
         initFootPanels();
+        initMainPanels();
     }
 
     /**
@@ -420,18 +421,15 @@ public class PagePrincipale extends javax.swing.JFrame {
     
     private void initClassementPanel(){
         panelClassement = new JPanel();
-        panelClassement.setLayout(new GridLayout(1, 1));
+        panelClassement.setLayout(new GridLayout(4, 1));
         
-        tableClassement = new JTable(new Object[][]
-                {{"1","OM", "5", "2", "1", "2","4", "1","0"},
-                 {"2","OL", "5", "2", "1", "2","4", "1","0"},
-                 {"3","PSG", "5", "2", "1", "2","4", "1","3"},
-                 {"4","CA", "5", "2", "1", "2","4", "1","0"}
-                }
-                //equipe/#/PT/G/N/P/B.M/B.C/D.B
-                , new String[]{"#", "Equipe", "PT", "G", "N", "P", "B.M", "B.C", "D.B"} );
-        scrollPaneClassement = new JScrollPane(tableClassement);
-        panelClassement.add(scrollPaneClassement);
+        javax.swing.JLabel footLabel = new JLabel();
+        javax.swing.JLabel basketLabel = new JLabel();
+        footLabel.setText("Classement Football");
+        basketLabel.setText("Classement Basketball");
+        panelClassement.add(footLabel);
+        panelClassement.add(scrollPaneFootClassement);
+        panelClassement.add(basketLabel);
         panelClassement.setVisible(true);
     }
     
@@ -531,6 +529,10 @@ public class PagePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("[Championnat-foot] Affichage du classement équipe foot");
+                panelChampionatFootContainer.setVisible(false);
+                panelChampionatFootContainer.removeAll();
+                panelChampionatFootContainer.add(scrollPaneFootClassement);
+                panelChampionatFootContainer.setVisible(true);
             }
         });
         
@@ -549,7 +551,21 @@ public class PagePrincipale extends javax.swing.JFrame {
                 System.out.println("[Championat-foot] Affichage Classement Joueur");
             }
         });
-        
+     
+        panelChampionatFootContainer.setLayout(new GridLayout(1, 1));
+        initChampionatFootClassementPanel();
+    }
+    
+    private void initChampionatFootClassementPanel(){
+        tableFootClassement = new JTable(new Object[][]
+                {{"1","OM", "5", "2", "1", "2","4", "1","0"},
+                 {"2","OL", "5", "2", "1", "2","4", "1","0"},
+                 {"3","PSG", "5", "2", "1", "2","4", "1","3"},
+                 {"4","CA", "5", "2", "1", "2","4", "1","0"}
+                }
+                //equipe/#/PT/G/N/P/B.M/B.C/D.B
+                , new String[]{"#", "Equipe", "PT", "G", "N", "P", "B.M", "B.C", "D.B"} );
+        scrollPaneFootClassement = new JScrollPane(tableFootClassement);
     }
     /************************* FootPanels END ****************************/
     public static void main(String args[]) {

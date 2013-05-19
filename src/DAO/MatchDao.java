@@ -95,7 +95,30 @@ public class MatchDao extends DaoAbstraite<Match>{
 
     @Override
     public void update(Match obj) {
-        
+        PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update match set equipeA=?, equipeB=?, scoreA=?, scoreB=?, datematch=? where id=? ;");
+            pst.setString(1, obj.getEquipeA());
+            pst.setString(2, obj.getEquipeB());
+            pst.setInt(3, obj.getScoreA());
+            pst.setInt(4, obj.getScoreB());
+            pst.setDate(5, obj.getDatematch());
+            pst.setInt(6, obj.getId());
+            pst.executeUpdate();
+            
+            System.out.println("modification Match effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
     }
 
     @Override

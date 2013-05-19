@@ -24,13 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="130" max="32767" attributes="0"/>
-                      <Component id="jButtonauthInscrip" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonAuthConnect" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -39,9 +33,15 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldAuthMdp" pref="165" max="32767" attributes="0"/>
-                          <Component id="jTextFieldAuthMail" max="32767" attributes="0"/>
+                          <Component id="jPasswordFieldAuthMdp" max="32767" attributes="0"/>
+                          <Component id="jTextFieldAuthMail" pref="165" max="32767" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="130" max="32767" attributes="0"/>
+                      <Component id="jButtonauthInscrip" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonAuthConnect" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
@@ -65,7 +65,7 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldAuthMdp" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPasswordFieldAuthMdp" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -90,11 +90,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldAuthMail">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldAuthMdp">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldAuthMdpActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="jButtonauthInscrip">
       <Properties>
         <Property name="text" type="java.lang.String" value="s&apos;Inscrire"/>
@@ -109,6 +104,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Veuillez entrer vos identifiant"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jPasswordFieldAuthMdp">
     </Component>
   </SubComponents>
 </Form>

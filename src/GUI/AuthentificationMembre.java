@@ -29,22 +29,16 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldAuthMail = new javax.swing.JTextField();
-        jTextFieldAuthMdp = new javax.swing.JTextField();
         jButtonauthInscrip = new javax.swing.JButton();
         jButtonAuthConnect = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jPasswordFieldAuthMdp = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("email");
 
         jLabel2.setText("Mot de passe");
-
-        jTextFieldAuthMdp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAuthMdpActionPerformed(evt);
-            }
-        });
 
         jButtonauthInscrip.setText("s'Inscrire");
 
@@ -57,12 +51,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(130, Short.MAX_VALUE)
-                        .addComponent(jButtonauthInscrip)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAuthConnect))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,8 +59,13 @@ public class AuthentificationMembre extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldAuthMdp, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAuthMail))))
+                            .addComponent(jPasswordFieldAuthMdp)
+                            .addComponent(jTextFieldAuthMail, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(130, Short.MAX_VALUE)
+                        .addComponent(jButtonauthInscrip)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAuthConnect)))
                 .addGap(105, 105, 105))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -89,7 +83,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldAuthMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordFieldAuthMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonauthInscrip)
@@ -99,10 +93,6 @@ public class AuthentificationMembre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldAuthMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAuthMdpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldAuthMdpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,7 +134,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordFieldAuthMdp;
     private javax.swing.JTextField jTextFieldAuthMail;
-    private javax.swing.JTextField jTextFieldAuthMdp;
     // End of variables declaration//GEN-END:variables
 }

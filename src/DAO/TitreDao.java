@@ -38,7 +38,32 @@ public class TitreDao extends DaoAbstraite<Titre>{
 
     @Override
     public Titre insert(Titre obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         PreparedStatement pst = null;
+        try {
+                            pst = this.connect().prepareStatement("INSERT INTO Titre (nom,annee,id) VALUES (?,?,?);");
+                            pst.setString(1, obj.getNom());
+                            pst.setString(2, obj.getAnnee());
+                            
+                            pst.setInt(3, obj.getId());
+                            
+                            pst.executeUpdate();
+                            System.out.println("insertion Titre terminer");
+        } catch (SQLException ex) {
+            Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "insertion echouer", ex);
+        }finally{
+        
+            try {
+            if(pst != null)
+            pst.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
+        }
+            
+        }
+        
+        
+        
+        return obj;
     }
 
     @Override

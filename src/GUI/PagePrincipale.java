@@ -5,7 +5,9 @@
 package GUI;
  
 import DAO.ArticleDao;
+import DAO.TitreDao;
 import Metier.Article;
+import Metier.Titre;
 import RSS.RssFeadReader;
 import com.sun.xml.internal.ws.api.pipe.NextAction;
 import java.awt.GridLayout;
@@ -219,6 +221,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuFoot.add(jMenuItemFootListJoueur);
 
         jMenuItemFootPalmares.setText("Palmares");
+        jMenuItemFootPalmares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFootPalmaresActionPerformed(evt);
+            }
+        });
         jMenuFoot.add(jMenuItemFootPalmares);
 
         jMenuBar1.add(jMenuFoot);
@@ -368,6 +375,14 @@ public class PagePrincipale extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemFootListJoueurActionPerformed
 
+    private void jMenuItemFootPalmaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFootPalmaresActionPerformed
+        jPanelBaseContainer.setVisible(false);
+        jPanelBaseContainer.removeAll();
+        jPanelBaseContainer.add(scrollPanelPalmares);
+        jPanelBaseContainer.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemFootPalmaresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -463,6 +478,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     private void initFootPanels(){
         initChampionatPanel();
         initListeJoueursPanel();
+        initPalmares();
     }
     
     private void initChampionatPanel(){
@@ -621,6 +637,22 @@ public class PagePrincipale extends javax.swing.JFrame {
             new String[] {"Nom", "Prenom", "Date naissance", "Poste", "Salaire", "Taille", "Poids", "Email"});
         scrollPaneListeJoueurs = new JScrollPane(tableListeJoueurs);
     }
+    
+    private void initPalmares(){
+        TitreDao td = TitreDao.getInstance();
+        List<Titre> titres = td.findAll();
+        Object[][] o = new Object[titres.size()][2];
+        int index = 0;
+        for (Titre t : titres) {
+            
+            o[index][0] = t.getNom();
+            o[index][1] = t.getAnnee();
+            index++;
+        }
+        
+        tablePalmares = new JTable(o, new String[]{"Titre", "Année"} );
+        scrollPanelPalmares = new JScrollPane(tablePalmares);
+    }
     /************************* FootPanels END ****************************/
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -703,6 +735,12 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JTable tableListeJoueurs;
     private javax.swing.JScrollPane scrollPaneListeJoueurs;
     // Liste Joueurs END
+    
+    // Palmares Begin
+    private javax.swing.JTable tablePalmares;
+    private javax.swing.JScrollPane scrollPanelPalmares;
+    // Palmares END
+    
     // FootBall END.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;

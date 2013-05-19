@@ -117,7 +117,45 @@ public class TitreDao extends DaoAbstraite<Titre>{
 
     @Override
     public Titre find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Titre found = null; 
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+        
+        try {
+            pst=this.connect().prepareStatement("select * from Titre where id= ?");
+            pst.setInt(1, id);
+            rs=pst.executeQuery();
+            System.out.println("recherche individuelle réussie");
+            if (rs.next()) {
+               
+                found = new Titre(rs.getInt("id"), rs.getString("nom"), rs.getString("annee"));
+            
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+        }finally{
+            
+            
+                try {
+                    if (rs != null)
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                }
+                
+                 
+                try {
+                    if (pst != null)
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                }
+                
+        }
+        return found;
     }
 
     @Override

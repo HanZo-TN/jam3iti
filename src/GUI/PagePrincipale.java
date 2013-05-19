@@ -38,6 +38,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     public PagePrincipale() {
         initComponents();
         initFootPanels();
+        initBasketPanels();
         initMainPanels();
     }
 
@@ -328,7 +329,14 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.setVisible(true);
     }//GEN-LAST:event_jMenuItemFootChampionnatActionPerformed
 
+    /*********************** Basket Menu Events *****************************/
     private void jMenuItemBaskeChampionnat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBaskeChampionnat1ActionPerformed
+        jPanelBaseContainer.setVisible(false);
+        jPanelBaseContainer.removeAll();
+        jPanelBaseContainer.add(panelChampionatBasketBaseContainer);
+        panelChampionatBasketBaseContainer.setVisible(true);
+        panelChampionatBasketContainer.add(scrollPaneBasketClassement); // Affichage par défaut
+        jPanelBaseContainer.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemBaskeChampionnat1ActionPerformed
 
@@ -370,7 +378,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     private void jMenuItemFootListJoueurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFootListJoueurActionPerformed
         jPanelBaseContainer.setVisible(false);
         jPanelBaseContainer.removeAll();
-        jPanelBaseContainer.add(scrollPaneListeJoueurs);
+        jPanelBaseContainer.add(scrollPaneFootListeJoueurs);
         jPanelBaseContainer.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemFootListJoueurActionPerformed
@@ -630,12 +638,12 @@ public class PagePrincipale extends javax.swing.JFrame {
     }
     
     public void initListeJoueursPanel(){
-        tableListeJoueurs = new JTable(new Object[][]
+        tableFootListeJoueurs = new JTable(new Object[][]
         {
             {"Aznar", "Emmanuel", "23/12/1915", "Attaquant", "5K€", "1m80","75K", "ema@gmail.com"}
         }, 
             new String[] {"Nom", "Prenom", "Date naissance", "Poste", "Salaire", "Taille", "Poids", "Email"});
-        scrollPaneListeJoueurs = new JScrollPane(tableListeJoueurs);
+        scrollPaneFootListeJoueurs = new JScrollPane(tableFootListeJoueurs);
     }
     
     private void initPalmares(){
@@ -654,6 +662,188 @@ public class PagePrincipale extends javax.swing.JFrame {
         scrollPanelPalmares = new JScrollPane(tablePalmares);
     }
     /************************* FootPanels END ****************************/
+
+    /************************* BasketPanels BEGIN **************************/ 
+    private void initBasketPanels(){
+        initChampionatBasketPanel();
+        initListeJoueursBasketPanel();
+        initPalmaresBasket();
+    }
+    
+    private void initChampionatBasketPanel(){
+        panelChampionatBasketBaseContainer = new javax.swing.JPanel();
+        panelChampionatBasketBaseContainer.setVisible(false);
+                
+        buttonChampBasketClassementEquipe = new javax.swing.JButton();
+        buttonChampBasketCalendar = new javax.swing.JButton();
+        buttonChampBasketClassementJoueur = new javax.swing.JButton();
+        panelChampionatBasketContainer = new javax.swing.JPanel();
+
+        buttonChampBasketClassementEquipe.setText("Classement");
+
+        buttonChampBasketCalendar.setText("Calendar");
+
+        buttonChampBasketClassementJoueur.setText("# Joueur");
+
+        javax.swing.GroupLayout panelChampionatBasketContainerLayout = new javax.swing.GroupLayout(panelChampionatBasketContainer);
+        panelChampionatBasketContainer.setLayout(panelChampionatBasketContainerLayout);
+        panelChampionatBasketContainerLayout.setHorizontalGroup(
+            panelChampionatBasketContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelChampionatBasketContainerLayout.setVerticalGroup(
+            panelChampionatBasketContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelChampionatBasketBaseContainerLayout = new javax.swing.GroupLayout(panelChampionatBasketBaseContainer);
+        panelChampionatBasketBaseContainer.setLayout(panelChampionatBasketBaseContainerLayout);
+        panelChampionatBasketBaseContainerLayout.setHorizontalGroup(
+            panelChampionatBasketBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChampionatBasketBaseContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelChampionatBasketBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelChampionatBasketContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelChampionatBasketBaseContainerLayout.createSequentialGroup()
+                        .addComponent(buttonChampBasketClassementEquipe)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonChampBasketCalendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonChampBasketClassementJoueur)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelChampionatBasketBaseContainerLayout.setVerticalGroup(
+            panelChampionatBasketBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChampionatBasketBaseContainerLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(panelChampionatBasketBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonChampBasketClassementEquipe)
+                    .addComponent(buttonChampBasketCalendar)
+                    .addComponent(buttonChampBasketClassementJoueur))
+                .addGap(18, 18, 18)
+                .addComponent(panelChampionatBasketContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(panelChampionatBasketBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(panelChampionatBasketBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        
+        buttonChampBasketClassementEquipe.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("[Championnat-foot] Affichage du classement équipe foot");
+                panelChampionatBasketContainer.setVisible(false);
+                panelChampionatBasketContainer.removeAll();
+                panelChampionatBasketContainer.add(scrollPaneBasketClassement);
+                panelChampionatBasketContainer.setVisible(true);
+            }
+        });
+        
+        buttonChampBasketCalendar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("[Championnat-foot] Affichage du calendrier");
+                panelChampionatBasketContainer.setVisible(false);
+                panelChampionatBasketContainer.removeAll();
+                panelChampionatBasketContainer.add(scrollPaneBasketCalendar);
+                panelChampionatBasketContainer.setVisible(true);
+            }
+        });
+        
+        buttonChampBasketClassementJoueur.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("[Championat-foot] Affichage Classement Joueur");
+                panelChampionatBasketContainer.setVisible(false);
+                panelChampionatBasketContainer.removeAll();
+                panelChampionatBasketContainer.add(scrollPaneBasketClassementJoueur);
+                panelChampionatBasketContainer.setVisible(true);
+            }
+        });
+     
+        panelChampionatBasketContainer.setLayout(new GridLayout(1, 1));
+        initChampionatBasketClassementPanel();
+        initChampionatBasketCalendarPanel();
+        initChampionatBasketClassementJoueurPanel();
+    }
+    
+    private void initChampionatBasketClassementPanel(){
+        tableBasketClassement = new JTable(new Object[][]
+                {{"1","OM", "5", "2", "1", "2","4", "1","0"},
+                 {"2","OL", "5", "2", "1", "2","4", "1","0"},
+                 {"3","PSG", "5", "2", "1", "2","4", "1","3"},
+                 {"4","CA", "5", "2", "1", "2","4", "1","0"}
+                }
+                //equipe/#/PT/G/N/P/B.M/B.C/D.B
+                , new String[]{"#", "Equipe", "PT", "G", "N", "P", "B.M", "B.C", "D.B"} );
+        scrollPaneBasketClassement = new JScrollPane(tableBasketClassement);
+    }
+    
+    private void initChampionatBasketCalendarPanel(){
+        tableBasketCalendar = new JTable(new Object[][] 
+        {{"12/12/2012", "OM", "1-6", "PSG"},
+         {"13/12/2012", "OL", "4-5","OM"}
+        }
+                , new String[] {"Date", "Equipe 1", "Score", "Equipe 2"});
+        scrollPaneBasketCalendar = new JScrollPane(tableBasketCalendar);
+    }
+    
+    private void initChampionatBasketClassementJoueurPanel(){
+        tableBasketClassementJoueur = new JTable(new Object[][]
+        {
+            {"Rednaks", "Over 900000"},
+            {"Rammeh","21"},
+            {"Zaraki", "20"}
+        }
+        , new String[] { "Joueur", "N Buts"});
+        tableBasketClassementJoueur.setEnabled(false);
+        scrollPaneBasketClassementJoueur = new JScrollPane(tableBasketClassementJoueur);
+    }
+    
+    public void initListeJoueursBasketPanel(){
+        tableBasketListeJoueurs = new JTable(new Object[][]
+        {
+            {"Aznar", "Emmanuel", "23/12/1915", "Attaquant", "5K€", "1m80","75K", "ema@gmail.com"}
+        }, 
+            new String[] {"Nom", "Prenom", "Date naissance", "Poste", "Salaire", "Taille", "Poids", "Email"});
+        scrollPaneBasketListeJoueurs = new JScrollPane(tableBasketListeJoueurs);
+    }
+    
+    private void initPalmaresBasket(){
+        TitreDao td = TitreDao.getInstance();
+        List<Titre> titres = td.findAll();
+        Object[][] o = new Object[titres.size()][2];
+        int index = 0;
+        for (Titre t : titres) {
+            
+            o[index][0] = t.getNom();
+            o[index][1] = t.getAnnee();
+            index++;
+        }
+        
+        tablePalmares = new JTable(o, new String[]{"Titre", "Année"} );
+        scrollPanelPalmares = new JScrollPane(tablePalmares);
+    }
+    /************************* BasketPanels END ****************************/
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -732,8 +922,8 @@ public class PagePrincipale extends javax.swing.JFrame {
     // Championat END
     // Liste Joueurs Begin
     private javax.swing.JPanel panelListeJoueurs;
-    private javax.swing.JTable tableListeJoueurs;
-    private javax.swing.JScrollPane scrollPaneListeJoueurs;
+    private javax.swing.JTable tableFootListeJoueurs;
+    private javax.swing.JScrollPane scrollPaneFootListeJoueurs;
     // Liste Joueurs END
     
     // Palmares Begin
@@ -742,6 +932,34 @@ public class PagePrincipale extends javax.swing.JFrame {
     // Palmares END
     
     // FootBall END.
+    
+    // BasketBall Begin
+    // Championat Begin
+    private javax.swing.JPanel panelChampionatBasketBaseContainer;
+    
+    private javax.swing.JButton buttonChampBasketClassementEquipe;
+    private javax.swing.JButton buttonChampBasketCalendar;
+    private javax.swing.JButton buttonChampBasketClassementJoueur;
+    
+    private javax.swing.JPanel panelChampionatBasketContainer;
+    private javax.swing.JScrollPane scrollPaneBasketClassement;
+    private javax.swing.JTable tableBasketClassement;
+    private javax.swing.JScrollPane scrollPaneBasketCalendar;
+    private javax.swing.JTable tableBasketCalendar;
+    private javax.swing.JScrollPane scrollPaneBasketClassementJoueur;
+    private javax.swing.JTable tableBasketClassementJoueur;
+    // Championat END
+    // Liste Joueurs Begin
+    private javax.swing.JTable tableBasketListeJoueurs;
+    private javax.swing.JScrollPane scrollPaneBasketListeJoueurs;
+    // Liste Joueurs END
+    
+    // Palmares Begin
+    private javax.swing.JTable tableBasketPalmares;
+    private javax.swing.JScrollPane scrollPanelBasketPalmares;
+    // Palmares END
+    
+    // BasketBall END.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;

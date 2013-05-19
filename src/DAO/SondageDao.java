@@ -4,7 +4,11 @@
  */
 package DAO;
 import Metier.Sondage;
-import java.util.List;
+import java.util.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -22,7 +26,14 @@ public class SondageDao extends DaoAbstraite<Sondage>{
 
     @Override
     public void create() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Statement st = null;
+        try {
+            st = this.connect().createStatement();
+            st.executeUpdate("create table Sondage(id int(4) , question varchar(50) , choixa varchar(30), choixb varchar(30), choixc varchar(30) );");
+            System.out.println("la table Sondage est creer");
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "creation de la table Sondage echoué", ex);
+        }
     }
 
     @Override

@@ -98,7 +98,33 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
 
     @Override
     public void update(Joueur obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update Joueur set nom=?, prenom=?, post=?, taille=?, poids=?, email=?, salaire=?, datenaiss=? where id=? ;");
+            pst.setString(1, obj.getNomJoueur());
+            pst.setString(2, obj.getPrenomJoueur());
+            pst.setString(3, obj.getPostJoueur());
+            pst.setFloat(4, obj.getTailleJoueur());
+            pst.setFloat(5, obj.getPoidsJoueur());
+            pst.setString(6, obj.getEmail());
+            pst.setFloat(7, obj.getSalaire());
+            pst.setDate(8, obj.getDatenaiss());
+            pst.setInt(9, obj.getIdJoueur());
+            pst.executeUpdate();
+            
+            System.out.println("modification joueur effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
     }
 
     @Override

@@ -7,6 +7,10 @@ package GUI;
 import com.sun.xml.internal.ws.api.pipe.NextAction;
 import java.awt.GridLayout;
 import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,6 +29,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     public PagePrincipale() {
         initComponents();
         initPanels();
+        initFootPanels();
     }
 
     /**
@@ -312,6 +317,11 @@ public class PagePrincipale extends javax.swing.JFrame {
 
     private void jMenuItemFootChampionnatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFootChampionnatActionPerformed
         // TODO add your handling code here:
+        jPanelBaseContainer.setVisible(false);
+        jPanelBaseContainer.removeAll();
+        jPanelBaseContainer.add(panelChampionatFootBaseContainer);
+        panelChampionatFootBaseContainer.setVisible(true);
+        jPanelBaseContainer.setVisible(true);
     }//GEN-LAST:event_jMenuItemFootChampionnatActionPerformed
 
     private void jMenuItemBaskeChampionnat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBaskeChampionnat1ActionPerformed
@@ -356,6 +366,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    /******************  Main Panels BEGIN ************************************/
     private void initPanels(){
         initHomePanel();
         System.out.println("Adding Home panel");
@@ -423,6 +434,124 @@ public class PagePrincipale extends javax.swing.JFrame {
         panelClassement.add(scrollPaneClassement);
         panelClassement.setVisible(true);
     }
+    
+    /************************* MainPanels END *********************************/
+    
+    /************************* FootPanels BEGIN **************************/ 
+    private void initFootPanels(){
+        initChampionatPanel();
+    }
+    
+    private void initChampionatPanel(){
+        /*panelChampionatFootBaseContainer = new JPanel();
+        javax.swing.GroupLayout layoutChampionatFootBase = new GroupLayout(panelChampionatFootBaseContainer);
+        
+        buttonChampFootClassementEquipe = new JButton();
+        buttonChampFootCalendar = new JButton();
+        buttonChampFootClassementJoueur = new JButton();
+        panelChampionatFootContainer = new JPanel();
+        buttonChampFootClassementEquipe.setText("Classement");
+        buttonChampFootCalendar.setText("Calendar");
+        buttonChampFootClassementJoueur.setText("# Joueurs");
+        */
+        panelChampionatFootBaseContainer = new javax.swing.JPanel();
+        panelChampionatFootBaseContainer.setVisible(false);
+                
+        buttonChampFootClassementEquipe = new javax.swing.JButton();
+        buttonChampFootCalendar = new javax.swing.JButton();
+        buttonChampFootClassementJoueur = new javax.swing.JButton();
+        panelChampionatFootContainer = new javax.swing.JPanel();
+
+        buttonChampFootClassementEquipe.setText("Classement");
+
+        buttonChampFootCalendar.setText("Calendar");
+
+        buttonChampFootClassementJoueur.setText("# Joueur");
+
+        javax.swing.GroupLayout panelChampionatFootContainerLayout = new javax.swing.GroupLayout(panelChampionatFootContainer);
+        panelChampionatFootContainer.setLayout(panelChampionatFootContainerLayout);
+        panelChampionatFootContainerLayout.setHorizontalGroup(
+            panelChampionatFootContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelChampionatFootContainerLayout.setVerticalGroup(
+            panelChampionatFootContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 188, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelChampionatFootBaseContainerLayout = new javax.swing.GroupLayout(panelChampionatFootBaseContainer);
+        panelChampionatFootBaseContainer.setLayout(panelChampionatFootBaseContainerLayout);
+        panelChampionatFootBaseContainerLayout.setHorizontalGroup(
+            panelChampionatFootBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChampionatFootBaseContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelChampionatFootBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelChampionatFootContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelChampionatFootBaseContainerLayout.createSequentialGroup()
+                        .addComponent(buttonChampFootClassementEquipe)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonChampFootCalendar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonChampFootClassementJoueur)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelChampionatFootBaseContainerLayout.setVerticalGroup(
+            panelChampionatFootBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChampionatFootBaseContainerLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(panelChampionatFootBaseContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonChampFootClassementEquipe)
+                    .addComponent(buttonChampFootCalendar)
+                    .addComponent(buttonChampFootClassementJoueur))
+                .addGap(18, 18, 18)
+                .addComponent(panelChampionatFootContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(panelChampionatFootBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(panelChampionatFootBaseContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        
+        buttonChampFootClassementEquipe.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("[Championnat-foot] Affichage du classement équipe foot");
+            }
+        });
+        
+        buttonChampFootCalendar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("[Championnat-foot] Affichage du calendrier");
+            }
+        });
+        
+        buttonChampFootClassementJoueur.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("[Championat-foot] Affichage Classement Joueur");
+            }
+        });
+        
+    }
+    /************************* FootPanels END ****************************/
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -482,6 +611,24 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JTable tableClassement;
     private javax.swing.JScrollPane scrollPaneClassement;
     // Classement END
+    
+    // FootBall Begin
+    // Championat Begin
+    private javax.swing.JPanel panelChampionatFootBaseContainer;
+    
+    private javax.swing.JButton buttonChampFootClassementEquipe;
+    private javax.swing.JButton buttonChampFootCalendar;
+    private javax.swing.JButton buttonChampFootClassementJoueur;
+    
+    private javax.swing.JPanel panelChampionatFootContainer;
+    private javax.swing.JScrollPane scrollPaneFootClassement;
+    private javax.swing.JTable tableFootClassement;
+    private javax.swing.JScrollPane scrollPaneFootCalendar;
+    private javax.swing.JTable talbeFootCalendar;
+    private javax.swing.JScrollPane scrollPaneFootClassementJoueur;
+    private javax.swing.JTable tableFootClassementJoueur;
+    // Championat END
+    // FootBall END.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;

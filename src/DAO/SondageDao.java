@@ -70,7 +70,26 @@ public class SondageDao extends DaoAbstraite<Sondage>{
 
     @Override
     public void delete(Sondage obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        
+        try {
+            
+            pst = this.connect().prepareStatement("DELETE FROM Sondage where id=?;");
+            pst.setInt(1, obj.getId());
+            pst.executeUpdate();
+            System.out.println("suppression effectuer");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "suppression echoué", ex);
+        }finally{
+            
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "liberation preparedstatement echoué", ex);
+            }
+        }
     }
 
     @Override

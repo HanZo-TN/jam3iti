@@ -25,7 +25,14 @@ public class StaffDao extends DaoAbstraite<Staff>{
 
     @Override
     public void create() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Statement st = null;
+        try {
+            st = this.connect().createStatement();
+            st.executeUpdate("create table Staff(id int(4) , fonction varchar(50) , nom varchar(30), prenom varchar(30), age int );");
+            System.out.println("la table Sondage est creer");
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "creation de la table Staff echoué", ex);
+        }
     }
 
     @Override

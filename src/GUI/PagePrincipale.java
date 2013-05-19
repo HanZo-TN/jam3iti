@@ -530,6 +530,10 @@ public class PagePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("[Championnat-foot] Affichage du calendrier");
+                panelChampionatFootContainer.setVisible(false);
+                panelChampionatFootContainer.removeAll();
+                panelChampionatFootContainer.add(scrollPaneFootCalendar);
+                panelChampionatFootContainer.setVisible(true);
             }
         });
         
@@ -543,6 +547,7 @@ public class PagePrincipale extends javax.swing.JFrame {
      
         panelChampionatFootContainer.setLayout(new GridLayout(1, 1));
         initChampionatFootClassementPanel();
+        initChampionatFootCalendarPanel();
     }
     
     private void initChampionatFootClassementPanel(){
@@ -555,6 +560,15 @@ public class PagePrincipale extends javax.swing.JFrame {
                 //equipe/#/PT/G/N/P/B.M/B.C/D.B
                 , new String[]{"#", "Equipe", "PT", "G", "N", "P", "B.M", "B.C", "D.B"} );
         scrollPaneFootClassement = new JScrollPane(tableFootClassement);
+    }
+    
+    private void initChampionatFootCalendarPanel(){
+        tableFootCalendar = new JTable(new Object[][] 
+        {{"12/12/2012", "OM", "1-6", "PSG"},
+         {"13/12/2012", "OL", "4-5","OM"}
+        }
+                , new String[] {"Date", "Equipe 1", "Score", "Equipe 2"});
+        scrollPaneFootCalendar = new JScrollPane(tableFootCalendar);
     }
     /************************* FootPanels END ****************************/
     public static void main(String args[]) {
@@ -629,7 +643,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollPaneFootClassement;
     private javax.swing.JTable tableFootClassement;
     private javax.swing.JScrollPane scrollPaneFootCalendar;
-    private javax.swing.JTable talbeFootCalendar;
+    private javax.swing.JTable tableFootCalendar;
     private javax.swing.JScrollPane scrollPaneFootClassementJoueur;
     private javax.swing.JTable tableFootClassementJoueur;
     // Championat END

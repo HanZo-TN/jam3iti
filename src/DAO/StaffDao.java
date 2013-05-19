@@ -93,7 +93,29 @@ public class StaffDao extends DaoAbstraite<Staff>{
 
     @Override
     public void update(Staff obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update Staff set fonction=?, nom=?, prenom=?, age=? where id=? ;");
+            pst.setString(1, obj.getFonction());
+            pst.setString(2, obj.getNom());
+            pst.setString(3, obj.getPrenom());
+            pst.setInt(4, obj.getAge());
+            pst.setInt(5, obj.getId());
+            pst.executeUpdate();
+            
+            System.out.println("modification Sondage effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(StaffDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
     }
 
     @Override

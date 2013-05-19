@@ -40,7 +40,7 @@ public class MatchDao extends DaoAbstraite<Match>{
     public Match insert(Match obj) {
         PreparedStatement pst = null;
         try {
-                            pst = this.connect().prepareStatement("INSERT INTO match (equipeA, equipeB,datematch,scoreA,scoreB,id) VALUES (?,?,?,?,?,?);");
+                            pst = this.connect().prepareStatement("INSERT INTO Match (equipeA, equipeB,datematch,scoreA,scoreB,id) VALUES (?,?,?,?,?,?);");
                             pst.setString(1, obj.getEquipeA());
                             pst.setString(2, obj.getEquipeB());
                             pst.setDate(3, obj.getDatematch());
@@ -97,7 +97,7 @@ public class MatchDao extends DaoAbstraite<Match>{
     public void update(Match obj) {
         PreparedStatement pst = null;
         try {
-            pst = this.connect().prepareStatement("update match set equipeA=?, equipeB=?, scoreA=?, scoreB=?, datematch=? where id=? ;");
+            pst = this.connect().prepareStatement("update Match set equipeA=?, equipeB=?, scoreA=?, scoreB=?, datematch=? where id=? ;");
             pst.setString(1, obj.getEquipeA());
             pst.setString(2, obj.getEquipeB());
             pst.setInt(3, obj.getScoreA());

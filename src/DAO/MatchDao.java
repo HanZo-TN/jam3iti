@@ -38,7 +38,35 @@ public class MatchDao extends DaoAbstraite<Match>{
 
     @Override
     public Match insert(Match obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        try {
+                            pst = this.connect().prepareStatement("INSERT INTO match (equipeA, equipeB,datematch,scoreA,scoreB,id) VALUES (?,?,?,?,?,?);");
+                            pst.setString(1, obj.getEquipeA());
+                            pst.setString(2, obj.getEquipeB());
+                            pst.setDate(3, obj.getDatematch());
+                            pst.setInt(4, obj.getScoreA());
+                            pst.setInt(5, obj.getScoreB());
+                            pst.setInt(9, obj.getId());
+                            
+                            pst.executeUpdate();
+                            System.out.println("insertion Match terminer");
+        } catch (SQLException ex) {
+            Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "insertion echouer", ex);
+        }finally{
+        
+            try {
+            if(pst != null)
+            pst.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
+        }
+            
+        }
+        
+        
+        
+        return obj;
+        
     }
 
     @Override

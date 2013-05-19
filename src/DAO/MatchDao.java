@@ -165,7 +165,42 @@ public class MatchDao extends DaoAbstraite<Match>{
 
     @Override
     public List<Match> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Match> listM = new ArrayList<Match>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = this.connect().createStatement();
+            rs = st.executeQuery("select * from Match");
+            System.out.println("recherche général effectuée");
+            
+            
+            while (rs.next()) {
+              
+                
+                Match mt = new Match(rs.getInt("id"), rs.getString("equipeA"), rs.getString("equipeB"),rs.getInt("scoreA"), rs.getInt("scoreB"), rs.getDate("datematch"));
+                
+                
+               
+                               listM.add(mt);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "recherche general echoué", ex);
+        }finally{
+            try {
+                if(rs != null)
+                rs.close();
+                if(st != null)
+                st.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation statement || resultset echoué", ex);
+            }
+        }
+        
+        
+        return listM;
     }
     
 }

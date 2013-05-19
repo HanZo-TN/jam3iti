@@ -50,16 +50,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemFootChampionnatActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFootCoupe">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Coupe"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFootCL">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ligue des champions"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemFootListJoueur">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Liste des joueurs"/>
@@ -87,16 +77,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBaskeChampionnat1ActionPerformed"/>
               </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBaskeCoupe1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Coupe"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBaskeCL1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ligue des champions"/>
-              </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBaskeListJoueur">
               <Properties>

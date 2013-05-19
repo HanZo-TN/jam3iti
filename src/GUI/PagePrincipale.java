@@ -70,14 +70,10 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuAdmin = new javax.swing.JMenu();
         jMenuFoot = new javax.swing.JMenu();
         jMenuItemFootChampionnat = new javax.swing.JMenuItem();
-        jMenuItemFootCoupe = new javax.swing.JMenuItem();
-        jMenuItemFootCL = new javax.swing.JMenuItem();
         jMenuItemFootListJoueur = new javax.swing.JMenuItem();
         jMenuItemFootPalmares = new javax.swing.JMenuItem();
         jMenuBaske = new javax.swing.JMenu();
         jMenuItemBaskeChampionnat1 = new javax.swing.JMenuItem();
-        jMenuItemBaskeCoupe1 = new javax.swing.JMenuItem();
-        jMenuItemBaskeCL1 = new javax.swing.JMenuItem();
         jMenuItemBaskeListJoueur = new javax.swing.JMenuItem();
         jMenuItemBaskePalmares1 = new javax.swing.JMenuItem();
         jMenuStaff = new javax.swing.JMenu();
@@ -214,12 +210,6 @@ public class PagePrincipale extends javax.swing.JFrame {
         });
         jMenuFoot.add(jMenuItemFootChampionnat);
 
-        jMenuItemFootCoupe.setText("Coupe");
-        jMenuFoot.add(jMenuItemFootCoupe);
-
-        jMenuItemFootCL.setText("Ligue des champions");
-        jMenuFoot.add(jMenuItemFootCL);
-
         jMenuItemFootListJoueur.setText("Liste des joueurs");
         jMenuItemFootListJoueur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,12 +232,6 @@ public class PagePrincipale extends javax.swing.JFrame {
             }
         });
         jMenuBaske.add(jMenuItemBaskeChampionnat1);
-
-        jMenuItemBaskeCoupe1.setText("Coupe");
-        jMenuBaske.add(jMenuItemBaskeCoupe1);
-
-        jMenuItemBaskeCL1.setText("Ligue des champions");
-        jMenuBaske.add(jMenuItemBaskeCL1);
 
         jMenuItemBaskeListJoueur.setText("Liste des joueurs");
         jMenuBaske.add(jMenuItemBaskeListJoueur);
@@ -738,14 +722,10 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFoot;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItemBaskeCL1;
     private javax.swing.JMenuItem jMenuItemBaskeChampionnat1;
-    private javax.swing.JMenuItem jMenuItemBaskeCoupe1;
     private javax.swing.JMenuItem jMenuItemBaskeListJoueur;
     private javax.swing.JMenuItem jMenuItemBaskePalmares1;
-    private javax.swing.JMenuItem jMenuItemFootCL;
     private javax.swing.JMenuItem jMenuItemFootChampionnat;
-    private javax.swing.JMenuItem jMenuItemFootCoupe;
     private javax.swing.JMenuItem jMenuItemFootListJoueur;
     private javax.swing.JMenuItem jMenuItemFootPalmares;
     private javax.swing.JMenuItem jMenuItemStaffEducateur;

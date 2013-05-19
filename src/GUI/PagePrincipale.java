@@ -215,6 +215,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuFoot.add(jMenuItemFootCL);
 
         jMenuItemFootListJoueur.setText("Liste des joueurs");
+        jMenuItemFootListJoueur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFootListJoueurActionPerformed(evt);
+            }
+        });
         jMenuFoot.add(jMenuItemFootListJoueur);
 
         jMenuItemFootPalmares.setText("Palmares");
@@ -365,6 +370,14 @@ public class PagePrincipale extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonClassementActionPerformed
 
+    private void jMenuItemFootListJoueurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFootListJoueurActionPerformed
+        jPanelBaseContainer.setVisible(false);
+        jPanelBaseContainer.removeAll();
+        jPanelBaseContainer.add(scrollPaneListeJoueurs);
+        jPanelBaseContainer.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemFootListJoueurActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -439,6 +452,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     /************************* FootPanels BEGIN **************************/ 
     private void initFootPanels(){
         initChampionatPanel();
+        initListeJoueursPanel();
     }
     
     private void initChampionatPanel(){
@@ -588,6 +602,15 @@ public class PagePrincipale extends javax.swing.JFrame {
         tableFootClassementJoueur.setEnabled(false);
         scrollPaneFootClassementJoueur = new JScrollPane(tableFootClassementJoueur);
     }
+    
+    public void initListeJoueursPanel(){
+        tableListeJoueurs = new JTable(new Object[][]
+        {
+            {"Aznar", "Emmanuel", "23/12/1915", "Attaquant", "5K€", "1m80","75K", "ema@gmail.com"}
+        }, 
+            new String[] {"Nom", "Prenom", "Date naissance", "Poste", "Salaire", "Taille", "Poids", "Email"});
+        scrollPaneListeJoueurs = new JScrollPane(tableListeJoueurs);
+    }
     /************************* FootPanels END ****************************/
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -665,6 +688,11 @@ public class PagePrincipale extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollPaneFootClassementJoueur;
     private javax.swing.JTable tableFootClassementJoueur;
     // Championat END
+    // Liste Joueurs Begin
+    private javax.swing.JPanel panelListeJoueurs;
+    private javax.swing.JTable tableListeJoueurs;
+    private javax.swing.JScrollPane scrollPaneListeJoueurs;
+    // Liste Joueurs END
     // FootBall END.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;

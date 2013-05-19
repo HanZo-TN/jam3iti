@@ -26,10 +26,10 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
 
     @Override
     public void create() {
-        Statement st;
+        Statement st = null;
         try {
             st = this.connect().createStatement();
-            st.executeUpdate("create table Joueur(id int(4) not null, nom varchar(30) not null, prenom varchar(30) not null,email varchar(30) not null, post varchar(30) not null, salaire float not null, taille float not null, poid float not null, datenaiss date not null );");
+            st.executeUpdate("create table Joueur(id int(4) , nom varchar(30) , prenom varchar(30) ,email varchar(30) , post varchar(30), salaire float , taille float , poid float , datenaiss date  );");
             System.out.println("la table Joueur est creer");
         } catch (SQLException ex) {
             Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "creation de la table joueur echoué", ex);
@@ -41,7 +41,7 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
     public Joueur insert(Joueur obj) {
         PreparedStatement pst = null;
         try {
-                            pst = this.connect().prepareStatement("INSERT INTO player (nom, prenom,dateNaiss,post,salaire,poid,taille,email) VALUES (?,?,?,?,?,?,?,?);");
+                            pst = this.connect().prepareStatement("INSERT INTO Joueur (nom, prenom,datenaiss,post,salaire,poid,taille,email,id) VALUES (?,?,?,?,?,?,?,?,?);");
                             pst.setString(1, obj.getNomJoueur());
                             pst.setString(2, obj.getPrenomJoueur());
                             pst.setDate(3, obj.getDatenaiss());
@@ -50,6 +50,7 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
                             pst.setFloat(6, obj.getPoidsJoueur());
                             pst.setFloat(7, obj.getTailleJoueur());
                             pst.setString(8,obj.getEmail());
+                            pst.setInt(9, obj.getIdJoueur());
                             
                             pst.executeUpdate();
                             System.out.println("insertion Joueur terminer");
@@ -100,7 +101,7 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
     public void update(Joueur obj) {
         PreparedStatement pst = null;
         try {
-            pst = this.connect().prepareStatement("update Joueur set nom=?, prenom=?, post=?, taille=?, poids=?, email=?, salaire=?, datenaiss=? where id=? ;");
+            pst = this.connect().prepareStatement("update Joueur set nom=?, prenom=?, post=?, taille=?, poid=?, email=?, salaire=?, datenaiss=? where id=? ;");
             pst.setString(1, obj.getNomJoueur());
             pst.setString(2, obj.getPrenomJoueur());
             pst.setString(3, obj.getPostJoueur());

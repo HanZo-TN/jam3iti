@@ -21,8 +21,8 @@ public class Joueur {
         private float poidsJoueur;
         private String email;
      
-     public Joueur() {}
-     public Joueur(int IdJoueur, String nomJoueur, String prenomJoueur, Date datenaiss, String postJoueur, float salaire, float tailleJoueur, float poidsJoueur, String email) {
+     public Joueur(int i) {this.idJoueur=i;}
+     public Joueur(int IdJoueur, String nomJoueur , String prenomJoueur, Date datenaiss, String postJoueur, float salaire, float tailleJoueur, float poidsJoueur, String email) {
          this.idJoueur=IdJoueur;
          this.nomJoueur=nomJoueur;
          this.prenomJoueur=prenomJoueur;

@@ -85,6 +85,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Liste des joueurs"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemBaskeListJoueurActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBaskePalmares1">
               <Properties>

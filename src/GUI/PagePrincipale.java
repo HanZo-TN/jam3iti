@@ -242,6 +242,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuBaske.add(jMenuItemBaskeChampionnat1);
 
         jMenuItemBaskeListJoueur.setText("Liste des joueurs");
+        jMenuItemBaskeListJoueur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBaskeListJoueurActionPerformed(evt);
+            }
+        });
         jMenuBaske.add(jMenuItemBaskeListJoueur);
 
         jMenuItemBaskePalmares1.setText("Palmares");
@@ -390,6 +395,14 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemFootPalmaresActionPerformed
+ // Basket ! 
+    private void jMenuItemBaskeListJoueurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBaskeListJoueurActionPerformed
+        jPanelBaseContainer.setVisible(false);
+        jPanelBaseContainer.removeAll();
+        jPanelBaseContainer.add(scrollPaneBasketListeJoueurs);
+        jPanelBaseContainer.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItemBaskeListJoueurActionPerformed
 
     /**
      * @param args the command line arguments

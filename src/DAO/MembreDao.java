@@ -25,7 +25,14 @@ public class MembreDao extends DaoAbstraite<Staff>{
 
     @Override
     public void create() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Statement st = null;
+        try {
+            st = this.connect().createStatement();
+            st.executeUpdate("create table Membre(id int(4) , nom varchar(30) , prenom varchar(30), email varchar(30),mdp(30), status varchar(30) );");
+            System.out.println("la table Membre est creer");
+        } catch (SQLException ex) {
+            Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "creation de la table Membre echoué", ex);
+        }
     }
 
     @Override

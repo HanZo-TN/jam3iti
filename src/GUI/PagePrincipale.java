@@ -441,17 +441,6 @@ public class PagePrincipale extends javax.swing.JFrame {
     }
     
     private void initChampionatPanel(){
-        /*panelChampionatFootBaseContainer = new JPanel();
-        javax.swing.GroupLayout layoutChampionatFootBase = new GroupLayout(panelChampionatFootBaseContainer);
-        
-        buttonChampFootClassementEquipe = new JButton();
-        buttonChampFootCalendar = new JButton();
-        buttonChampFootClassementJoueur = new JButton();
-        panelChampionatFootContainer = new JPanel();
-        buttonChampFootClassementEquipe.setText("Classement");
-        buttonChampFootCalendar.setText("Calendar");
-        buttonChampFootClassementJoueur.setText("# Joueurs");
-        */
         panelChampionatFootBaseContainer = new javax.swing.JPanel();
         panelChampionatFootBaseContainer.setVisible(false);
                 

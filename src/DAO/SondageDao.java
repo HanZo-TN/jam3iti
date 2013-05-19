@@ -94,7 +94,29 @@ public class SondageDao extends DaoAbstraite<Sondage>{
 
     @Override
     public void update(Sondage obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update Sondage set question=?, choixa=?, choixb, choixc where id=? ;");
+            pst.setString(1, obj.getQuestion());
+            pst.setString(2, obj.getChoixA());
+            pst.setString(3, obj.getChoixB());
+            pst.setString(4, obj.getChoixC());
+            pst.setInt(5, obj.getId());
+            pst.executeUpdate();
+            
+            System.out.println("modification Sondage effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
     }
 
     @Override

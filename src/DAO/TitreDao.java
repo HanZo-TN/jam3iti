@@ -26,7 +26,14 @@ public class TitreDao extends DaoAbstraite<Titre>{
 
     @Override
     public void create() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Statement st = null;
+        try {
+            st = this.connect().createStatement();
+            st.executeUpdate("create table Titre(id int(4) , nom varchar(30) , annee varchar(30) );");
+            System.out.println("la table Titre est creer");
+        } catch (SQLException ex) {
+            Logger.getLogger(TitreDao.class.getName()).log(Level.SEVERE, "creation de la table Titre echoué", ex);
+        }
     }
 
     @Override

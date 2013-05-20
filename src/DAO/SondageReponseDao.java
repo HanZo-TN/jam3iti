@@ -5,6 +5,8 @@
 package DAO;
 
 import Metier.Sondage;
+import Metier.SondageReponse;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author rednaks
  */
-public class SondageReponseDao extends DaoAbstraite<Sondage> {
+public class SondageReponseDao extends DaoAbstraite<SondageReponse> {
 
            
     private SondageReponseDao () {}
@@ -38,28 +40,55 @@ public class SondageReponseDao extends DaoAbstraite<Sondage> {
 
     }
 
+   
+    public SondageReponse insert(SondageReponse obj) {
+     PreparedStatement pst = null;
+        try {
+                            pst = this.connect().prepareStatement("INSERT INTO SondageReponse (id_sondage,choix, nombreChoix,id) VALUES (?,?,?,?);");
+                            pst.setInt(1, obj.getId_sondage());
+                            pst.setInt(2, obj.getChoix());
+                            pst.setInt(2, obj.getNombreChoix());
+                            pst.setInt(3, obj.getId());
+                            
+                            pst.setInt(5, obj.getId());
+                            
+                            pst.executeUpdate();
+                            System.out.println("insertion SondageReponse terminer");
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "insertion echouer", ex);
+        }finally{
+        
+            try {
+            if(pst != null)
+            pst.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageDao.class.getName()).log(Level.SEVERE, "liberation du preparedstatement echouée", ex);
+        }
+            
+        }
+        
+        
+        
+        return obj;
+    }
+
     @Override
-    public Sondage insert(Sondage obj) {
+    public void delete(SondageReponse obj) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void delete(Sondage obj) {
+    public void update(SondageReponse obj) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public void update(Sondage obj) {
+    public SondageReponse find(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Sondage find(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public List<Sondage> findAll() {
+    public List<SondageReponse> findAll() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

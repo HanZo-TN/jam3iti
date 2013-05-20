@@ -28,6 +28,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Espace membre"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuMembreMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuAdmin">
           <Properties>

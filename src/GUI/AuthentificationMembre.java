@@ -34,7 +34,7 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPasswordFieldAuthMdp = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("email");
 

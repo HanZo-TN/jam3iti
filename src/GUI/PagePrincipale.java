@@ -223,6 +223,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         jMenuBar1.add(jMenuAcceuil);
 
         jMenuMembre.setText("Espace membre");
+        jMenuMembre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuMembreMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenuMembre);
 
         jMenuAdmin.setText("Espace administration");
@@ -483,6 +488,12 @@ public class PagePrincipale extends javax.swing.JFrame {
        SondageChart sChart = new SondageChart(lastSondage);
        sChart.setVisible(true);
     }//GEN-LAST:event_jButtonResActionPerformed
+
+    private void jMenuMembreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuMembreMouseClicked
+        AuthentificationMembre authM = new AuthentificationMembre();
+        authM.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuMembreMouseClicked
 
     /**
      * @param args the command line arguments

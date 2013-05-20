@@ -46,7 +46,7 @@ public class MatchDao extends DaoAbstraite<Match>{
                             pst.setDate(3, obj.getDatematch());
                             pst.setInt(4, obj.getScoreA());
                             pst.setInt(5, obj.getScoreB());
-                            pst.setInt(9, obj.getId());
+                            pst.setInt(6, obj.getId());
                             
                             pst.executeUpdate();
                             System.out.println("insertion Match terminer");

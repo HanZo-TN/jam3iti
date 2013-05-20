@@ -3,6 +3,15 @@
  * and open the template in the editor.
  */
 package GUI;
+import Metier.Match;
+import DAO.MatchDao;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 
 /**
  *
@@ -13,8 +22,12 @@ public class GestionDesMatchs extends javax.swing.JFrame {
     /**
      * Creates new form GestionDesMatchs
      */
+        MatchDao  mat;
+        Match ma;
     public GestionDesMatchs() {
         initComponents();
+       
+        
     }
 
     /**
@@ -33,10 +46,10 @@ public class GestionDesMatchs extends javax.swing.JFrame {
         jTextFieldGesMatchEquipeB = new javax.swing.JTextField();
         jTextFieldGesMatchScoreA = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonjButtonGestMatchModif = new javax.swing.JButton();
+        jButtonGestMatchSupp = new javax.swing.JButton();
+        jButtonGestMatchRech = new javax.swing.JButton();
+        jButtonGestMatchAjout = new javax.swing.JButton();
         jTextFieldGesMatchId = new javax.swing.JTextField();
         jFormattedTextFieldGesMatchDate = new javax.swing.JFormattedTextField();
         jTextFieldGesMatchScoreB = new javax.swing.JTextField();
@@ -52,15 +65,21 @@ public class GestionDesMatchs extends javax.swing.JFrame {
 
         jLabel5.setText("id Match");
 
-        jButton1.setText("Modifier");
+        jButtonjButtonGestMatchModif.setText("Modifier");
 
-        jButton2.setText("Supprimer");
+        jButtonGestMatchSupp.setText("Supprimer");
 
-        jButton.setText("Rechercher");
+        jButtonGestMatchRech.setText("Rechercher");
 
-        jButton4.setText("Ajouter");
+        jButtonGestMatchAjout.setText("Ajouter");
+        jButtonGestMatchAjout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestMatchAjoutActionPerformed(evt);
+            }
+        });
 
         jFormattedTextFieldGesMatchDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextFieldGesMatchDate.setText("dd/MM/yy");
 
         jLabel3.setText("Gestions Des Matchs :");
 
@@ -70,34 +89,35 @@ public class GestionDesMatchs extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel5)
-                        .addGap(126, 126, 126)
-                        .addComponent(jTextFieldGesMatchId, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonGestMatchRech, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonGestMatchAjout, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonjButtonGestMatchModif, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(jButtonGestMatchSupp, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addGap(82, 82, 82)
+                                .addComponent(jTextFieldGesMatchId, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextFieldGesMatchEquipeA, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldGesMatchScoreA)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextFieldGesMatchScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldGesMatchEquipeB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addComponent(jButton2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldGesMatchScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldGesMatchEquipeB, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -115,14 +135,11 @@ public class GestionDesMatchs extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldGesMatchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldGesMatchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldGesMatchEquipeB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,15 +157,34 @@ public class GestionDesMatchs extends javax.swing.JFrame {
                         .addComponent(jFormattedTextFieldGesMatchDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4)
-                    .addComponent(jButton))
+                    .addComponent(jButtonGestMatchSupp)
+                    .addComponent(jButtonjButtonGestMatchModif)
+                    .addComponent(jButtonGestMatchAjout)
+                    .addComponent(jButtonGestMatchRech))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonGestMatchAjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestMatchAjoutActionPerformed
+          mat = MatchDao.getInstance();
+          SimpleDateFormat sdf = new SimpleDateFormat();
+         
+          
+          Date date = null;
+            try {
+                date = new Date(new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH).parse(jFormattedTextFieldGesMatchDate.getText()).getTime());
+            } catch (ParseException ex) {
+                Logger.getLogger(GestionDesMatchs.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+          ma = new Match(jTextFieldGesMatchEquipeA.getText(), jTextFieldGesMatchEquipeB.getText(), Integer.parseInt(jTextFieldGesMatchScoreA.getText()) , Integer.parseInt(jTextFieldGesMatchScoreB.getText()), date );
+          System.out.println("test"+date);
+          mat.insert(ma);
+            
+        
+    }//GEN-LAST:event_jButtonGestMatchAjoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,10 +221,10 @@ public class GestionDesMatchs extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonGestMatchAjout;
+    private javax.swing.JButton jButtonGestMatchRech;
+    private javax.swing.JButton jButtonGestMatchSupp;
+    private javax.swing.JButton jButtonjButtonGestMatchModif;
     private javax.swing.JFormattedTextField jFormattedTextFieldGesMatchDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -44,6 +44,18 @@ public class Match {
         this.datematch=datematch;
         
     }
+        
+        public Match (int id,String equipeA, String equipeB, int scoreA, int scoreB) {
+    
+        
+        this.equipeA=equipeA;
+        this.equipeB=equipeB;
+        this.scoreA=scoreA;
+        this.scoreB=scoreB;
+        this.id=id;
+        
+    }
+
 
     
     /**

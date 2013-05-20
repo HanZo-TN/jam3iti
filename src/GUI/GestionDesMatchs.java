@@ -5,13 +5,19 @@
 package GUI;
 import Metier.Match;
 import DAO.MatchDao;
+import java.awt.Dialog;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
+import javax.swing.*;
+
 
 /**
  *
@@ -73,8 +79,18 @@ public class GestionDesMatchs extends javax.swing.JFrame {
         });
 
         jButtonGestMatchSupp.setText("Supprimer");
+        jButtonGestMatchSupp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestMatchSuppActionPerformed(evt);
+            }
+        });
 
         jButtonGestMatchRech.setText("Rechercher");
+        jButtonGestMatchRech.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestMatchRechActionPerformed(evt);
+            }
+        });
 
         jButtonGestMatchAjout.setText("Ajouter");
         jButtonGestMatchAjout.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +203,8 @@ public class GestionDesMatchs extends javax.swing.JFrame {
           ma = new Match(jTextFieldGesMatchEquipeA.getText(), jTextFieldGesMatchEquipeB.getText(), Integer.parseInt(jTextFieldGesMatchScoreA.getText()) , Integer.parseInt(jTextFieldGesMatchScoreB.getText()), date );
           System.out.println("test"+date);
           mat.insert(ma);
+          ma=mat.findId(ma);
+          jTextFieldGesMatchId.setText(""+ma.getId());
             
         
     }//GEN-LAST:event_jButtonGestMatchAjoutActionPerformed
@@ -208,6 +226,48 @@ public class GestionDesMatchs extends javax.swing.JFrame {
           mat.update(ma);
             
     }//GEN-LAST:event_jButtonjButtonGestMatchModifActionPerformed
+
+    private void jButtonGestMatchSuppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestMatchSuppActionPerformed
+         mat = MatchDao.getInstance();
+          
+         
+          
+          
+            
+          ma = new Match(Integer.parseInt(jTextFieldGesMatchId.getText()),jTextFieldGesMatchEquipeA.getText(), jTextFieldGesMatchEquipeB.getText(), Integer.parseInt(jTextFieldGesMatchScoreA.getText()) , Integer.parseInt(jTextFieldGesMatchScoreB.getText()) );
+          System.out.println("test");
+          mat.delete(ma);
+          jTextFieldGesMatchEquipeA.setText("");
+          jTextFieldGesMatchEquipeB.setText("");
+          jTextFieldGesMatchId.setText("");
+          jTextFieldGesMatchScoreA.setText("");
+          jTextFieldGesMatchScoreB.setText("");
+          jFormattedTextFieldGesMatchDate.setText("");
+    }//GEN-LAST:event_jButtonGestMatchSuppActionPerformed
+
+    private void jButtonGestMatchRechActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestMatchRechActionPerformed
+         mat = MatchDao.getInstance();
+          
+          ma=mat.find(Integer.parseInt(jTextFieldGesMatchId.getText()));
+          if(ma != null){
+          jTextFieldGesMatchEquipeA.setText(ma.getEquipeA());
+          jTextFieldGesMatchEquipeB.setText(ma.getEquipeB());
+          jTextFieldGesMatchId.setText(""+ma.getId());
+          jTextFieldGesMatchScoreA.setText(""+ma.getScoreA());
+          jTextFieldGesMatchScoreB.setText(""+ma.getScoreB());
+          jFormattedTextFieldGesMatchDate.setText(""+ma.getDatematch());}
+          else{
+             AuthDialog ad = new AuthDialog();
+             ad.showDialog();
+             
+              
+              
+              
+          }
+              
+          
+          
+    }//GEN-LAST:event_jButtonGestMatchRechActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +302,50 @@ public class GestionDesMatchs extends javax.swing.JFrame {
                 new GestionDesMatchs().setVisible(true);
             }
         });
+    }
+    
+    private class AuthDialog extends JDialog {
+    
+        HashMap result = new HashMap<String, String>();
+        javax.swing.JPanel panel = new JPanel();
+        
+        javax.swing.JDialog loginDialog = new JDialog(this);
+        
+        javax.swing.JLabel emailLabel = new JLabel("Match non existant");
+        
+        
+        javax.swing.JButton loginButton = new JButton("Ok");
+        
+        public AuthDialog() {
+            setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL); // Pour bloquer la dialog lorsque setVisible est à true !
+            
+            loginButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    
+                    setVisible(false);
+                    dispose();
+                }
+            });
+            loginButton.setSize(50, 15);
+            setTitle("Authentification");
+            setSize(300, 200);
+            panel.setLayout(new GridLayout(3, 2));
+            panel.add(emailLabel);
+           
+            panel.add(loginButton);
+            this.add(panel);
+        }
+        
+        public HashMap showDialog() {
+            setVisible(true);
+            return result;
+        }
+        
+        
+        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGestMatchAjout;

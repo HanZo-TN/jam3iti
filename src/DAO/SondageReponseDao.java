@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -169,7 +170,43 @@ public class SondageReponseDao extends DaoAbstraite<SondageReponse> {
 
     @Override
     public List<SondageReponse> findAll() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<SondageReponse> listS = new ArrayList<SondageReponse>();
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            st = this.connect().createStatement();
+            rs = st.executeQuery("select * from SondageReponse");
+            System.out.println("recherche général effectuée");
+            
+            
+            while (rs.next()) {
+              
+                
+                SondageReponse sd = new SondageReponse(rs.getInt("id"), rs.getInt("id_sondage"), rs.getInt("choix"), rs.getInt("nombreChoix"));
+                
+                
+               
+                               listS.add(sd);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageReponseDao.class.getName()).log(Level.SEVERE, "recherche general echoué", ex);
+        }finally{
+            try {
+                if(rs != null)
+                rs.close();
+                if(st != null)
+                st.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(SondageReponseDao.class.getName()).log(Level.SEVERE, "liberation statement || resultset echoué", ex);
+            }
+        }
+        
+        
+        return listS;
+
     }
     
 }

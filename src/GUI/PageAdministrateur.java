@@ -109,6 +109,8 @@ public class PageAdministrateur extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGestionMatchsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionMatchsActionPerformed
+        GestionDesMatchs gm = new GestionDesMatchs();
+        gm.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonGestionMatchsActionPerformed
 

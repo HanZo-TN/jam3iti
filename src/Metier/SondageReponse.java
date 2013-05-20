@@ -63,7 +63,6 @@ public class SondageReponse {
         hash = 97 * hash + this.id;
         hash = 97 * hash + this.id_sondage;
         hash = 97 * hash + this.choix;
-        hash = 97 * hash + this.nombreChoix;
         return hash;
     }
 
@@ -83,9 +82,6 @@ public class SondageReponse {
             return false;
         }
         if (this.choix != other.choix) {
-            return false;
-        }
-        if (this.nombreChoix != other.nombreChoix) {
             return false;
         }
         return true;

@@ -203,4 +203,48 @@ public class MatchDao extends DaoAbstraite<Match>{
         return listM;
     }
     
+    public Match findId(Match m) {
+        Match found = null; 
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+        
+        try {
+            pst=this.connect().prepareStatement("select * from Matches where equipea=? and equipeb=? and scorea=? and scoreb=?");
+            pst.setString(1, m.getEquipeA());
+            pst.setString(2, m.getEquipeB());
+            pst.setInt(3, m.getScoreA());
+            pst.setInt(4, m.getScoreB());
+            rs=pst.executeQuery();
+            System.out.println("recherche individuelle réussie");
+            if (rs.next()) {
+               
+                found = new Match(rs.getInt("id"), rs.getString("equipeA"), rs.getString("equipeB"),rs.getInt("scoreA"), rs.getInt("scoreB"), rs.getDate("datematch"));
+            
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+        }finally{
+            
+            
+                try {
+                    if (rs != null)
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                }
+                
+                 
+                try {
+                    if (pst != null)
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                }
+                
+        }
+        return found;
+    }
+    
 }

@@ -6,9 +6,11 @@ package GUI;
  
 import DAO.ArticleDao;
 import DAO.SondageDao;
+import DAO.SondageReponseDao;
 import DAO.TitreDao;
 import Metier.Article;
 import Metier.Sondage;
+import Metier.SondageReponse;
 import Metier.Titre;
 import RSS.RssFeadReader;
 import com.sun.xml.internal.ws.api.pipe.NextAction;
@@ -121,14 +123,34 @@ public class PagePrincipale extends javax.swing.JFrame {
 
         buttonGroupSondageChoix.add(jRadioButtonSondageChoix1);
         jRadioButtonSondageChoix1.setText("Choix 1");
+        jRadioButtonSondageChoix1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSondageChoix1ActionPerformed(evt);
+            }
+        });
 
         buttonGroupSondageChoix.add(jRadioButtonSondageChoix2);
         jRadioButtonSondageChoix2.setText("Choix 2");
+        jRadioButtonSondageChoix2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSondageChoix2ActionPerformed(evt);
+            }
+        });
 
         buttonGroupSondageChoix.add(jRadioButtonSondageChoix3);
         jRadioButtonSondageChoix3.setText("Choix 3");
+        jRadioButtonSondageChoix3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSondageChoix3ActionPerformed(evt);
+            }
+        });
 
         jButtonVote.setText("Vote");
+        jButtonVote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoteActionPerformed(evt);
+            }
+        });
 
         jButtonRes.setText("Resultat");
 
@@ -418,6 +440,39 @@ public class PagePrincipale extends javax.swing.JFrame {
         jPanelBaseContainer.setVisible(true);
     }//GEN-LAST:event_jMenuItemBaskePalmares1ActionPerformed
 
+    private void jButtonVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoteActionPerformed
+ 
+        SondageReponseDao srd = SondageReponseDao.getInstance();
+        List<SondageReponse> listReponses = srd.findAll();
+        SondageReponse sr_vote = new SondageReponse(lastSondage.getId(), lastSondage.getId(), sondageChoix, 1);
+        
+        for(SondageReponse sr : listReponses){
+            if(sr_vote.equals(sr)){
+                sr_vote = sr;
+                sr_vote.setNombreChoix(sr.getNombreChoix()+1);
+                srd.update(sr_vote);
+                break;
+            }
+        }
+        
+        if(sr_vote.getNombreChoix() == 1)
+            srd.insert(sr_vote);
+        
+        System.out.println("Vote ajouté " + sr_vote);
+    }//GEN-LAST:event_jButtonVoteActionPerformed
+
+    private void jRadioButtonSondageChoix1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSondageChoix1ActionPerformed
+        sondageChoix = 1;
+    }//GEN-LAST:event_jRadioButtonSondageChoix1ActionPerformed
+
+    private void jRadioButtonSondageChoix2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSondageChoix2ActionPerformed
+        sondageChoix = 2;
+    }//GEN-LAST:event_jRadioButtonSondageChoix2ActionPerformed
+
+    private void jRadioButtonSondageChoix3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSondageChoix3ActionPerformed
+        sondageChoix = 3;
+    }//GEN-LAST:event_jRadioButtonSondageChoix3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -478,7 +533,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     private void initSondagePanel(){
         SondageDao sd = SondageDao.getInstance();
         List<Sondage> res = sd.findAll();
-        Sondage lastSondage = res.get(res.size()-1);
+        lastSondage = res.get(res.size()-1);
         
         jPanelSondage.setVisible(false);
         jLabelSondageQuestion.setText(lastSondage.getQuestion());
@@ -1001,6 +1056,8 @@ public class PagePrincipale extends javax.swing.JFrame {
     // Palmares END
     
     // BasketBall END.
+    private Sondage lastSondage;
+    private int sondageChoix;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupSondageChoix;
     private javax.swing.JButton jButtonCalendrier;

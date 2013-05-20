@@ -29,7 +29,7 @@ public class MatchDao extends DaoAbstraite<Match>{
         Statement st = null;
         try {
             st = this.connect().createStatement();
-            st.executeUpdate("create table Match(id int(4) , equipeA varchar(30) , equipeB varchar(30) , scoreA int(2) , scoreB int(2) , datematch date  );");
+            st.executeUpdate("create table Match(id int(4) AUTO_INCREMENT Primary Key, equipeA varchar(30) , equipeB varchar(30) , scoreA int(2) , scoreB int(2) , datematch date  );");
             System.out.println("la table Match est creer");
         } catch (SQLException ex) {
             Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "creation de la table Match echoué", ex);

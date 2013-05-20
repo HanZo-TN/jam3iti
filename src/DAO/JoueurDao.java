@@ -29,7 +29,7 @@ public class JoueurDao extends DaoAbstraite<Joueur>{
         Statement st = null;
         try {
             st = this.connect().createStatement();
-            st.executeUpdate("create table Joueur(id int(4) , nom varchar(30) , prenom varchar(30) ,email varchar(30) , post varchar(30), salaire float , taille float , poid float , datenaiss date  );");
+            st.executeUpdate("create table Joueur(id int(4) AUTO_INCREMENT Primary Key, nom varchar(30) , prenom varchar(30) ,email varchar(30) , post varchar(30), salaire float , taille float , poid float , datenaiss date  );");
             System.out.println("la table Joueur est creer");
         } catch (SQLException ex) {
             Logger.getLogger(JoueurDao.class.getName()).log(Level.SEVERE, "creation de la table joueur echoué", ex);

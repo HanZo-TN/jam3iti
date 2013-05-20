@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package GUI;
+import Metier.Membre;
+import DAO.MembreDao;
 
 /**
  *
@@ -51,6 +53,11 @@ public class InscriptionMembre extends javax.swing.JFrame {
         jLabel5.setText("Vérification Mot de passe :");
 
         jButtonInscripValider.setText("Valider");
+        jButtonInscripValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInscripValiderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,6 +126,21 @@ public class InscriptionMembre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonInscripValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInscripValiderActionPerformed
+        // TODO add your handling code here:
+        MembreDao md;
+        md = MembreDao.getInstance();
+        Membre m ;
+        if(jPasswordFieldInscripMdp.getText().equals(jPasswordFieldInscripVerifMdp.getText()))
+        {
+            m = new Membre(jTextFieldInscripNom.getText(), jTextFieldInscripPrenom.getText(), jPasswordFieldInscripMdp.getText(), jTextFieldInscripEmail.getText(), "Membre");
+            md.insert(m);
+            this.setVisible(false);
+            
+        }else System.out.println("champ mot de passe & vérif mdp ne correspondent pas"+jPasswordFieldInscripMdp.getText()+"verif"+jPasswordFieldInscripVerifMdp.getText());
+        
+    }//GEN-LAST:event_jButtonInscripValiderActionPerformed
 
     /**
      * @param args the command line arguments

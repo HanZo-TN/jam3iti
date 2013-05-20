@@ -28,7 +28,7 @@ public class MembreDao extends DaoAbstraite<Membre>{
          Statement st = null;
         try {
             st = this.connect().createStatement();
-            st.executeUpdate("create table Membre(id int(4) , nom varchar(30) , prenom varchar(30), email varchar(30),mdp(30), status varchar(30) );");
+            st.executeUpdate("create table Membre(id int(4) AUTO_INCREMENT Primary Key, nom varchar(30) , prenom varchar(30), email varchar(30),mdp varchar(30), status varchar(30) );");
             System.out.println("la table Membre est creer");
         } catch (SQLException ex) {
             Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "creation de la table Membre echoué", ex);

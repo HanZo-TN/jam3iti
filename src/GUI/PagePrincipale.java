@@ -5,8 +5,10 @@
 package GUI;
  
 import DAO.ArticleDao;
+import DAO.SondageDao;
 import DAO.TitreDao;
 import Metier.Article;
+import Metier.Sondage;
 import Metier.Titre;
 import RSS.RssFeadReader;
 import com.sun.xml.internal.ws.api.pipe.NextAction;
@@ -422,6 +424,7 @@ public class PagePrincipale extends javax.swing.JFrame {
     /******************  Main Panels BEGIN ************************************/
     private void initMainPanels(){
         initHomePanel();
+        initSondagePanel();
         System.out.println("Adding Home panel");
         jPanelBaseContainer.setLayout(new GridLayout(1, 1));
         jPanelBaseContainer.add(panelHome);
@@ -471,7 +474,20 @@ public class PagePrincipale extends javax.swing.JFrame {
         panelHome.add(synopsysPane);
         panelHome.setVisible(true);
     }
-
+    
+    private void initSondagePanel(){
+        SondageDao sd = SondageDao.getInstance();
+        List<Sondage> res = sd.findAll();
+        Sondage lastSondage = res.get(res.size()-1);
+        
+        jPanelSondage.setVisible(false);
+        jLabelSondageQuestion.setText(lastSondage.getQuestion());
+        jRadioButtonSondageChoix1.setText(lastSondage.getChoixA());
+        jRadioButtonSondageChoix2.setText(lastSondage.getChoixB());
+        jRadioButtonSondageChoix3.setText(lastSondage.getChoixC());
+        jPanelSondage.setVisible(true);
+        
+    }
     private void initNextMatchPanel(){
         panelNextMatch = new JPanel();
         nextMatchTextPane = new JTextPane();

@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Charts.SondageChart;
 import DAO.MembreDao;
 import Metier.Membre;
 import java.awt.GridLayout;
@@ -67,6 +68,11 @@ public class PageAdministrateur extends javax.swing.JFrame {
         jButtonGestionStaff.setText("Gestion du Staff");
 
         jButtonGestionSondage.setText("Gestion des Sondages");
+        jButtonGestionSondage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionSondageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,6 +110,12 @@ public class PageAdministrateur extends javax.swing.JFrame {
     private void jButtonGestionMatchsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionMatchsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonGestionMatchsActionPerformed
+
+    private void jButtonGestionSondageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionSondageActionPerformed
+        GestionSondage gs = new GestionSondage();
+        gs.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonGestionSondageActionPerformed
 
     private boolean authentification(){
         

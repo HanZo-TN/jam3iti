@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -170,13 +171,13 @@ public class PageAdministrateur extends javax.swing.JFrame {
         javax.swing.JTextField emailTextField = new JTextField();
 
         javax.swing.JLabel passwordLabel = new JLabel("Mot de passe");
-        javax.swing.JTextField passwordTextField = new JTextField();
+        javax.swing.JPasswordField passwordTextField = new JPasswordField();
         
         javax.swing.JButton loginButton = new JButton("Login");
         
         public AuthDialog() {
             setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL); // Pour bloquer la dialog lorsque setVisible est à true !
-         
+            
             loginButton.addActionListener(new ActionListener() {
 
                 @Override

@@ -199,6 +199,44 @@ public class MembreDao extends DaoAbstraite<Membre>{
         
         return listM;
     }
+
+    public boolean checkAuth(Membre m) {
+        boolean found = false; 
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        
+        try {
+            pst=this.connect().prepareStatement("select * from Membre where email= ? and mdp = ? and status=?");
+            pst.setString(1, m.getEmail());
+            pst.setString(2, m.getMdp());
+            pst.setString(3, m.getStatus());
+            rs=pst.executeQuery();
+            found = rs.next();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "recherche individuelle echoué", ex);
+        }finally{
+            
+            
+                try {
+                    if (rs != null)
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "liberation result set echoué", ex);
+                }
+                
+                 
+                try {
+                    if (pst != null)
+                    pst.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MembreDao.class.getName()).log(Level.SEVERE, "liberation prepared statement echoué", ex);
+                }
+                
+        }
+        return found;
+
+    }
     
     
 }

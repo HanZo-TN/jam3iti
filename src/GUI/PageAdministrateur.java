@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import DAO.MembreDao;
+import Metier.Membre;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,10 +109,14 @@ public class PageAdministrateur extends javax.swing.JFrame {
         int essai = 3;
         
         AuthDialog ad = new AuthDialog();
-        
+        MembreDao md = MembreDao.getInstance();
+        Membre m = new Membre();
         while( essai > 0){
             HashMap res = ad.showDialog();
-            if(res.get("login").equals("admin@admin") && res.get("password").equals("pass"))
+            m.setEmail(res.get("login").toString());
+            m.setMdp(res.get("password").toString());
+            m.setStatus("admin");
+            if(md.checkAuth(m))
                 return true;
           essai--;
         }

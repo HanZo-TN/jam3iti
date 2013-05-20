@@ -31,7 +31,8 @@ public class PageAdministrateur extends javax.swing.JFrame {
         if(authentification())
             initComponents();
         else {
-            System.exit(0);
+            this.setVisible(false);
+            this.dispose();
         }
     }
 
@@ -50,7 +51,7 @@ public class PageAdministrateur extends javax.swing.JFrame {
         jButtonGestionStaff = new javax.swing.JButton();
         jButtonGestionSondage = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administration");
         setPreferredSize(new java.awt.Dimension(800, 600));
 
@@ -188,6 +189,7 @@ public class PageAdministrateur extends javax.swing.JFrame {
         javax.swing.JButton loginButton = new JButton("Login");
         
         public AuthDialog() {
+            setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
             setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL); // Pour bloquer la dialog lorsque setVisible est à true !
             
             loginButton.addActionListener(new ActionListener() {

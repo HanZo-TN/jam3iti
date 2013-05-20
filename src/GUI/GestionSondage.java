@@ -40,7 +40,7 @@ public class GestionSondage extends javax.swing.JFrame {
         jTextFieldChoixC = new javax.swing.JTextField();
         jButtonAjouterSondage = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         label1.setText("Ajouter un nouveau sondage");
 

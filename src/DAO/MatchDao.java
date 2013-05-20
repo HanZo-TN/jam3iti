@@ -29,7 +29,7 @@ public class MatchDao extends DaoAbstraite<Match>{
         Statement st = null;
         try {
             st = this.connect().createStatement();
-            st.executeUpdate("create table Match(id int(4) AUTO_INCREMENT Primary Key, equipeA varchar(30) , equipeB varchar(30) , scoreA int(2) , scoreB int(2) , datematch date  );");
+            st.executeUpdate("create table Matches(id int(4) AUTO_INCREMENT Primary Key, equipeA varchar(30) , equipeB varchar(30) , scoreA int(2) , scoreB int(2) , datematch date  );");
             System.out.println("la table Match est creer");
         } catch (SQLException ex) {
             Logger.getLogger(MatchDao.class.getName()).log(Level.SEVERE, "creation de la table Match echoué", ex);
@@ -40,7 +40,7 @@ public class MatchDao extends DaoAbstraite<Match>{
     public Match insert(Match obj) {
         PreparedStatement pst = null;
         try {
-                            pst = this.connect().prepareStatement("INSERT INTO Match (equipeA, equipeB,datematch,scoreA,scoreB,id) VALUES (?,?,?,?,?,?);");
+                            pst = this.connect().prepareStatement("INSERT INTO Matches (equipeA, equipeB,datematch,scoreA,scoreB,id) VALUES (?,?,?,?,?,?);");
                             pst.setString(1, obj.getEquipeA());
                             pst.setString(2, obj.getEquipeB());
                             pst.setDate(3, obj.getDatematch());
@@ -75,7 +75,7 @@ public class MatchDao extends DaoAbstraite<Match>{
         
         try {
             
-            pst = this.connect().prepareStatement("DELETE FROM Match where id=?;");
+            pst = this.connect().prepareStatement("DELETE FROM Matches where id=?;");
             pst.setInt(1, obj.getId());
             pst.executeUpdate();
             System.out.println("suppression effectuer");
@@ -97,7 +97,7 @@ public class MatchDao extends DaoAbstraite<Match>{
     public void update(Match obj) {
         PreparedStatement pst = null;
         try {
-            pst = this.connect().prepareStatement("update Match set equipeA=?, equipeB=?, scoreA=?, scoreB=?, datematch=? where id=? ;");
+            pst = this.connect().prepareStatement("update Matches set equipeA=?, equipeB=?, scoreA=?, scoreB=?, datematch=? where id=? ;");
             pst.setString(1, obj.getEquipeA());
             pst.setString(2, obj.getEquipeB());
             pst.setInt(3, obj.getScoreA());
@@ -128,7 +128,7 @@ public class MatchDao extends DaoAbstraite<Match>{
             ResultSet rs = null;
         
         try {
-            pst=this.connect().prepareStatement("select * from Match where id= ?");
+            pst=this.connect().prepareStatement("select * from Matches where id= ?");
             pst.setInt(1, id);
             rs=pst.executeQuery();
             System.out.println("recherche individuelle réussie");
@@ -170,7 +170,7 @@ public class MatchDao extends DaoAbstraite<Match>{
         ResultSet rs = null;
         try {
             st = this.connect().createStatement();
-            rs = st.executeQuery("select * from Match");
+            rs = st.executeQuery("select * from Matches");
             System.out.println("recherche général effectuée");
             
             

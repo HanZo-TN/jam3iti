@@ -19,6 +19,7 @@ import java.awt.GridLayout;
 import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.GroupLayout;
@@ -543,10 +544,19 @@ public class PagePrincipale extends javax.swing.JFrame {
         }
         
         tableNews = new JTable(o, new String[]{"Titre", "Date"} );
+        tableNews.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ArticleDao ad = ArticleDao.getInstance();
+                Article ar = ad.find(tableNews.getSelectedRow());
+                synopsysPane.setText(ar.getResume());
+            }
+        
+        });
+                
         scrollPane = new JScrollPane(tableNews);
         synopsysPane = new JTextPane();
         synopsysPane.setEditable(false);
-        synopsysPane.setText("La CFA2 olympienne reçoit Aubagne ce samedi au stade Paul-Le Cesne (18h) dans un match décisif pour la montée.");
+        
         panelHome.add(scrollPane);
         panelHome.add(synopsysPane);
         panelHome.setVisible(true);

@@ -66,6 +66,11 @@ public class GestionDesMatchs extends javax.swing.JFrame {
         jLabel5.setText("id Match");
 
         jButtonjButtonGestMatchModif.setText("Modifier");
+        jButtonjButtonGestMatchModif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonjButtonGestMatchModifActionPerformed(evt);
+            }
+        });
 
         jButtonGestMatchSupp.setText("Supprimer");
 
@@ -185,6 +190,24 @@ public class GestionDesMatchs extends javax.swing.JFrame {
             
         
     }//GEN-LAST:event_jButtonGestMatchAjoutActionPerformed
+
+    private void jButtonjButtonGestMatchModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonjButtonGestMatchModifActionPerformed
+         mat = MatchDao.getInstance();
+          SimpleDateFormat sdf = new SimpleDateFormat();
+         
+          
+          Date date = null;
+            try {
+                date = new Date(new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH).parse(jFormattedTextFieldGesMatchDate.getText()).getTime());
+            } catch (ParseException ex) {
+                Logger.getLogger(GestionDesMatchs.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+          ma = new Match(Integer.parseInt(jTextFieldGesMatchId.getText()),jTextFieldGesMatchEquipeA.getText(), jTextFieldGesMatchEquipeB.getText(), Integer.parseInt(jTextFieldGesMatchScoreA.getText()) , Integer.parseInt(jTextFieldGesMatchScoreB.getText()), date );
+          System.out.println("test"+date);
+          mat.update(ma);
+            
+    }//GEN-LAST:event_jButtonjButtonGestMatchModifActionPerformed
 
     /**
      * @param args the command line arguments

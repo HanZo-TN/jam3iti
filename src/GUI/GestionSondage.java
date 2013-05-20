@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import DAO.SondageDao;
+import Metier.Sondage;
+
 /**
  *
  * @author rednaks
@@ -50,6 +53,11 @@ public class GestionSondage extends javax.swing.JFrame {
         label5.setText("Choix C :");
 
         jButtonAjouterSondage.setText("Ajouter");
+        jButtonAjouterSondage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAjouterSondageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +117,12 @@ public class GestionSondage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAjouterSondageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjouterSondageActionPerformed
+        SondageDao sd = SondageDao.getInstance();
+        Sondage s = new Sondage(0, jTextFieldQuestion.getText(), jTextFieldChoixA.getText(), jTextFieldChoixB.getText(), jTextFieldChoixC.getText());
+        sd.insert(s);
+    }//GEN-LAST:event_jButtonAjouterSondageActionPerformed
 
     /**
      * @param args the command line arguments

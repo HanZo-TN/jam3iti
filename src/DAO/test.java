@@ -5,6 +5,8 @@
 package DAO;
 import Metier.Joueur;
 import DAO.JoueurDao;
+import DAO.MembreDao;
+
 
 
 /**
@@ -14,17 +16,14 @@ import DAO.JoueurDao;
 public class test {
     public static void main(String[] args) {
         
-        JoueurDao jrd =null;
-        jrd = JoueurDao.getInstance();
-        Joueur j1 = new Joueur(10);
-        Joueur j2 = new Joueur(11);
-        jrd.insert(j1);
-        jrd.insert(j2);
-        jrd.delete(j2);
-        j1.setNomJoueur("salah");
-        jrd.update(j1);
-        jrd.find(10);
-        jrd.findAll();
+        
+        MembreDao m = null;
+        m = MembreDao.getInstance();
+        m.create();
+        
+        
+        
+        
        
         
     

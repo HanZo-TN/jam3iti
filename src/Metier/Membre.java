@@ -25,6 +25,14 @@ public class Membre {
         this.email = email;
         this.status = status; 
     }
+    public Membre (String nomMembre, String prenomMembre, String mdp, String email, String status) {
+        
+        this.nomMembre = nomMembre;
+        this.prenomMembre = prenomMembre;
+        this.mdp = mdp;
+        this.email = email;
+        this.status = status; 
+    }
 
     /**
      * @return the idMembre

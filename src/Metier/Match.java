@@ -33,6 +33,19 @@ public class Match {
         
     }
 
+    
+        public Match (String equipeA, String equipeB, int scoreA, int scoreB, Date datematch) {
+    
+        
+        this.equipeA=equipeA;
+        this.equipeB=equipeB;
+        this.scoreA=scoreA;
+        this.scoreB=scoreB;
+        this.datematch=datematch;
+        
+    }
+
+    
     /**
      * @return the id
      */

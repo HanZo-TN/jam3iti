@@ -41,6 +41,11 @@ public class AuthentificationMembre extends javax.swing.JFrame {
         jLabel2.setText("Mot de passe");
 
         jButtonauthInscrip.setText("s'Inscrire");
+        jButtonauthInscrip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonauthInscripActionPerformed(evt);
+            }
+        });
 
         jButtonAuthConnect.setText("se connecter");
 
@@ -93,6 +98,11 @@ public class AuthentificationMembre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonauthInscripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonauthInscripActionPerformed
+      InscriptionMembre inscM = new InscriptionMembre();
+      inscM.setVisible(true);
+    }//GEN-LAST:event_jButtonauthInscripActionPerformed
 
     /**
      * @param args the command line arguments

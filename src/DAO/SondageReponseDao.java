@@ -49,11 +49,8 @@ public class SondageReponseDao extends DaoAbstraite<SondageReponse> {
                             pst = this.connect().prepareStatement("INSERT INTO SondageReponse (id_sondage,choix, nombreChoix,id) VALUES (?,?,?,?);");
                             pst.setInt(1, obj.getId_sondage());
                             pst.setInt(2, obj.getChoix());
-                            pst.setInt(2, obj.getNombreChoix());
-                            pst.setInt(3, obj.getId());
-                            
-                            pst.setInt(5, obj.getId());
-                            
+                            pst.setInt(3, obj.getNombreChoix());
+                            pst.setInt(4, obj.getId());             
                             pst.executeUpdate();
                             System.out.println("insertion SondageReponse terminer");
         } catch (SQLException ex) {

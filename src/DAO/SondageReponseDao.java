@@ -99,6 +99,28 @@ public class SondageReponseDao extends DaoAbstraite<SondageReponse> {
 
     @Override
     public void update(SondageReponse obj) {
+        PreparedStatement pst = null;
+        try {
+            pst = this.connect().prepareStatement("update SondageReponse set id_sondage=?, choix=?, nombreChoix=? where id=? ;");
+            pst.setInt(1, obj.getId_sondage());
+            pst.setInt(2, obj.getChoix());
+            pst.setInt(3, obj.getNombreChoix());
+            pst.setInt(4, obj.getId());
+            pst.executeUpdate();
+            
+            System.out.println("modification SondageReponse effectuée");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SondageReponseDao.class.getName()).log(Level.SEVERE, "requete modification echoué", ex);
+        }finally{
+            try {
+                if(pst != null)
+                pst.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SondageReponseDao.class.getName()).log(Level.SEVERE, "liberation prepared statement échoué", ex);
+            }
+            
+        }
 
     }
 

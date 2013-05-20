@@ -4,6 +4,7 @@
  */
 package GUI;
  
+import Charts.SondageChart;
 import DAO.ArticleDao;
 import DAO.SondageDao;
 import DAO.SondageReponseDao;
@@ -153,6 +154,11 @@ public class PagePrincipale extends javax.swing.JFrame {
         });
 
         jButtonRes.setText("Resultat");
+        jButtonRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResActionPerformed(evt);
+            }
+        });
 
         jLabelSondageQuestion.setText("Question ?");
 
@@ -472,6 +478,11 @@ public class PagePrincipale extends javax.swing.JFrame {
     private void jRadioButtonSondageChoix3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSondageChoix3ActionPerformed
         sondageChoix = 3;
     }//GEN-LAST:event_jRadioButtonSondageChoix3ActionPerformed
+
+    private void jButtonResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResActionPerformed
+       SondageChart sChart = new SondageChart(lastSondage);
+       sChart.setVisible(true);
+    }//GEN-LAST:event_jButtonResActionPerformed
 
     /**
      * @param args the command line arguments
